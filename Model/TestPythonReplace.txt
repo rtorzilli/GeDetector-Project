@@ -1,0 +1,12 @@
+c *************************************
+c Ge Detector Model - Super Basic
+c Authors: Robert Torzill, Bryan Egner
+c *************************************
+c
+c *****Block 1: Geometry *****
+
+c *****Block 1: Surfaces *****
+1 c/z xHole yHole zHole rHole $cylinder of hole
+1 c/z xHole yHole zHole rHole $cylinder of hole
+1 c/z xHole yDetect zHole rHole $cylinder of hole
+1 c/z xHole yHole zHole rHole $cylinder of hole
