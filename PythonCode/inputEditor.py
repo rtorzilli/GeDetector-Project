@@ -20,6 +20,7 @@ outputFile2 = osP.join(currentDir, "..\Model\TestEditDict.txt")
 # Dimensions needs to be columned
 # The First column must match the variable place holder in the model exactly
 # The Second column is the value
+# Their must be no extra lines 
 # =============================================================================
 dimensionsFile = osP.join(currentDir, "..\Model\holeDimensions.txt")
 
