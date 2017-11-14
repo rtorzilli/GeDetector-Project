@@ -1,0 +1,13 @@
+# Output Files to be Ignored #
+TestModel.txt
+TestEditDict.txt
+TestEditFile.txt
+####
+inpcrash
+inp
+outmc
+outp
+oved
+HPGe_cesium137.txtc
+HPGe_cesium137.txto
+fort.32
