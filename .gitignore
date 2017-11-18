@@ -1,8 +1,9 @@
-# Output Files to be Ignored #
+# Output Files to be Ignored From Testing#
 TestModel.txt
 TestEditDict.txt
 TestEditFile.txt
-####
+Output.txt
+# Output Files to be Ignored from testing MCNP#
 inpcrash
 inp
 outmc
