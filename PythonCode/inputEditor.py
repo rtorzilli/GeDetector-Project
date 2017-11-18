@@ -16,10 +16,31 @@ This file defines methods first since it may have to use a few while creating
 and reading file names in future iterations.
 """
 import os.path as osP
+from subprocess import Popen
 
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\TestModel.txt"
 variablesToAdjust = "\holeDimensions.txt"
+
+# Windows path for calls
+currentDir = osP.abspath(osP.dirname(__file__))
+
+# =============================================================================
+# Dimensions needs to be columned
+# The First column must match the variable place holder in the model exactly
+# The Second column is the value
+# There must be no extra lines 
+# =============================================================================
+dimensionsFile = osP.join(currentDir, "..\Model" + variablesToAdjust)
+
+# This should be the model of the MCNP 
+mcnpModelBase = osP.join(currentDir, "..\Model" + mcnpModel)
+
+# Output File, this will be renamed by the batch file
+outputFile = osP.join(currentDir, "..\Output" + mcnpModel)
+
+# Batch file that will be called
+runBat = Popen("test.bat", cwd=currentDir)
 
 # Opens file and replaces terms within that are matched in a defined dictionary
 def editFile (replace, inputFile, outputFile):
@@ -46,27 +67,11 @@ def createDictionary (dimensionsFile):
     return dictionary
 
 
+# *****Execution Section *****
 
-# Windows relative path
-currentDir = osP.abspath(osP.dirname(__file__))
-
-# =============================================================================
-# Dimensions needs to be columned
-# The First column must match the variable place holder in the model exactly
-# The Second column is the value
-# There must be no extra lines 
-# =============================================================================
-dimensionsFile = osP.join(currentDir, "..\Model" + variablesToAdjust)
-
-# This should be the model of the MCNP 
-mcnpModelBase = osP.join(currentDir, "..\Model" + mcnpModel)
-
-# Output File, this will be renamed by the batch file
-outputFile = osP.join(currentDir, "..\Output" + mcnpModel)
-
-
-
-
+# Call Batch file (eventaully will be the mcnp call)
+runBat.communicate()
+print("Working")
 
 # This Section is for testing/proving functionality
 # Tests the createDictionary from file and editFile
