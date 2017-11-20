@@ -1,2 +1,2 @@
 geDensity -5.22
-botGeCrystal 78998
+botGeCrystal 4.63899333

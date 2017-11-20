@@ -100,7 +100,8 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
 # =============================================================================
 # La Repeat Loop
 i = 0
-while i <20 :
+runtime = 2
+while i <runtime :
     # 1 Altar Model 
     detectorDimensions = createDictionary(dimensionsFile)
     editFile(detectorDimensions,mcnpModelBase,outputFile)
@@ -109,11 +110,15 @@ while i <20 :
     runBat.communicate()
     
     # 3 Compare Values
+    # =========================================================================
+    # Note that MCNP will iterate the output files by default if they share the 
+    # same name. That means we need to call the next iteration for the comparison
+    # =========================================================================
     if (i == 15):
         break;
     
     # 4 Create new Input Values
-    newDimensionValues = [-5.22,78998]
+    newDimensionValues = [-5.22,4.63899333]
     
     # =============================================================================
     # Change the value to the next one (use a loop) then place that value into 

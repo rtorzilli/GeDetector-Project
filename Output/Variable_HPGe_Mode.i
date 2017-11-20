@@ -49,7 +49,7 @@ c **** Ge Crystal Dimensions:
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
     9        pz 12.95899333 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
-   14        pz 78998  $ Bottom of Ge crystal(4.63899333cm offset)    ****ADJUST, +-3 mm****
+   14        pz 4.63899333  $ Bottom of Ge crystal(4.63899333cm offset)    ****ADJUST, +-3 mm****
 c **** Outside Ge Crystal:
 c IR Window:
     7        pz 13.08984    $ Metalized Mylar Layer(0.00084667cm),[13.1-0.01016]
