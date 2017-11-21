@@ -1,6 +1,7 @@
-@ECHO OFF
-REM Run the MCNP .exe
-SET variable = %~dp0
-REM %~dp0\Test_BatCall.py
-C:\Users\Robert\Documents\1_Software_Tools\MCNP_6.1\MCNP_CODE\MCNP6\bin\mcnp6.exe i=%~dp0\Variable_HPGe_Mode.i
-pause
+@PATH C:\Users\Robert\Documents\1_Software_Tools\MCNP_6.1_Windows\MCNP_CODE\bin;%PATH%
+rem @set XSDIR=
+@set DATAPATH=C:\Users\Robert\Documents\1_Software_Tools\MCNP_6.1_Windows\MCNP_DATA
+@set DISPLAY=localhost:0
+SET Path_Var = %~dp0
+mcnp6 i=%Path_Var%Variable_HPGe_Mode.i
+Pause
