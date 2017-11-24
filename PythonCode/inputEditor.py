@@ -19,20 +19,26 @@ This script has many fail points currently, use with caution
     For Stability the keywords of the Variable File have been hard coded
     since dictionaries are not ordered
 """
-import os.path as osP
-from subprocess import Popen
+import os
+import subprocess as subP
 
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\Variable_HPGe_Mode.i"
 variablesToAdjust = "\Variable_Input.txt"
+compareValues = "\GammaRayEnergies.txt"
+
 # Name of the batch file to run
 mcnpBat = "runMCNP.bat"
 
 # Windows path for calls
-currentDir = osP.abspath(osP.dirname(__file__))
+currentDir = os.path.abspath(os.path.dirname(__file__))
 
-# Windows path to runMCNP.bat
-batLocation = osP.join(currentDir, "..\")
+# Windows path to runMCNP.bat/parent directory
+batLocation = os.path.split(currentDir)[0]
+
+#User Defined Output file -- Change the runMCNP bat as well
+mcnpOut=batLocation+'\MCNP_Output\Variable_HPGe_Mode'
+mcnpOutRename = batLocation+'\MCNP_Output\Variable_HPGe_Mode_'
 
 # =============================================================================
 # Dimensions needs to be columned
@@ -40,19 +46,18 @@ batLocation = osP.join(currentDir, "..\")
 # The Second column is the value
 # There must be no extra lines 
 # =============================================================================
-dimensionsFile = osP.join(currentDir, "..\Model" + variablesToAdjust)
+dimensionsFile = os.path.join(currentDir, "..\Model" + variablesToAdjust)
+
+energyFile = os.path.join(currentDir, "..\Model" + compareValues)
 
 # These are the keywords in a set order for the purpose of manipulation later
 dimensionKeys = ['geDensity','botGeCrystal']
 
 # This should be the model of the MCNP 
-mcnpModelBase = osP.join(currentDir, "..\Model" + mcnpModel)
+mcnpModelBase = os.path.join(currentDir, "..\Model" + mcnpModel)
 
 # Output File, this will be renamed by the batch file
-outputFile = osP.join(currentDir, "..\Output" + mcnpModel)
-
-# Batch file that will be called
-runBat = Popen(mcnpBat, cwd=batLocation)
+outputFile = os.path.join(currentDir, "..\Output" + mcnpModel)
 
 # Opens file and replaces terms within that are matched in a defined dictionary
 def editFile (replace, inputFile, outputFile):
@@ -80,6 +85,20 @@ def createDictionary (dimensionsFile):
             dictionary[keyPass[0]] = keyPass[1]
     return dictionary
 
+# Search the data output file for a specfic keyword and copy taht line as a dict
+def getData(dataFile,wantedValues):
+    with open(dataFile) as inputFile:
+        dictionary ={}
+        # Read in each line
+        for line in inputFile:
+            #Is this a blank line?
+            if line.strip():
+                for key in wantedValues.keys():
+                    # does the first value equal a key?
+                    if line.split(maxsplit=1)[0] == key:           
+                        keyPass = line.split()
+                        dictionary[keyPass[0]] = keyPass[1]
+
 # =============================================================================
 #  Once fleshed out this function will pull in the dictionary keys and write
 #  out a new variable file. This will be used after new values are determined
@@ -90,7 +109,12 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
         print(valuesToChange[0] + " "+ str(newValue[0]) + 
               "\n" + valuesToChange[1] + " " + str(newValue[1]) 
               , file=text_file)
-        
+ 
+# =============================================================================
+#     Given Experimental Data
+# =============================================================================
+energyBins = createDictionary(energyFile)
+
 # =============================================================================
 # *****Execution Section *****
 # 1 Alter Model
@@ -105,25 +129,36 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
 # =============================================================================
 # La Repeat Loop
 i = 0
-runtime = 2
+runtime = -1
 while i <runtime :
     # 1 Altar Model 
     detectorDimensions = createDictionary(dimensionsFile)
     editFile(detectorDimensions,mcnpModelBase,outputFile)
     
-    # 2 Run "MCNP" currently a test bat file
-    runBat.communicate()
+    # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename+str(i))
     
+    # 2 Run "MCNP" currently a test bat file
+    # Batch file that will be called
+    runBat = subP.Popen(mcnpBat, cwd=batLocation, shell=True)
+    runBat.communicate()
+    runBat.wait()
+
     # 3 Compare Values
     # =========================================================================
     # Note that MCNP will iterate the output files by default if they share the 
     # same name. That means we need to call the next iteration for the comparison
     # =========================================================================
 	
-	abs(experimentalData - 12(gatheredData))/experimentalData
-	
-	want <.1
-	
+    #Grab Data
+    
+# =============================================================================
+# 	abs(experimentalData - 12(gatheredData))/experimentalData
+# 	
+# 	want <.1
+# 	
+# =============================================================================
     if (i == 15):
         break;
     
