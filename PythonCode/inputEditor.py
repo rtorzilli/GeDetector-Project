@@ -23,9 +23,10 @@ import os
 import subprocess as subP
 
 # User defined names for required input files. Currently requires \ before name
-mcnpModel = "\Variable_HPGe_Mode.i"
+mcnpModel = "\HPGe_Generic_Model.i"
 variablesToAdjust = "\Variable_Input.txt"
 compareValues = "\GammaRayEnergies.txt"
+sourceValues = "\Position_Change.txt"
 
 # Name of the batch file to run
 mcnpBat = "runMCNP.bat"
@@ -50,6 +51,8 @@ dimensionsFile = os.path.join(currentDir, "..\Model" + variablesToAdjust)
 
 energyFile = os.path.join(currentDir, "..\Model" + compareValues)
 
+sourceFile = os.path.join(currentDir, "..\Model" + sourceValues)
+
 # These are the keywords in a set order for the purpose of manipulation later
 dimensionKeys = ['geDensity','botGeCrystal']
 
@@ -68,14 +71,6 @@ def editFile (replace, inputFile, outputFile):
             outfile.write(line)
     return
 
-# NOT USED
-# Changes a given dictionary key  value. Purpose is to automate optimization
-def editDictionary (inputDict, key_replace, replaceValue):
-    for key in inputDict.keys():
-        if key == key_replace:
-            inputDict[key] = replaceValue
-    return print("Dictionary Values Edited")
-
 # Creates a dictionary from a text file    
 def createDictionary (dimensionsFile):
     with open(dimensionsFile) as inDims:
@@ -85,20 +80,32 @@ def createDictionary (dimensionsFile):
             dictionary[keyPass[0]] = keyPass[1]
     return dictionary
 
+# Create a dictionary to hold the position values
+def sourceDictionary(inputFile):
+    with open(inputFile) as inFile:
+        dictionary = {}
+        for line in inFile:
+            keyPass = line.split()
+            dictionary[keyPass[0]] = keyPass[1:]
+        # Alter Dictionary
+        
+    return dictionary
+
 # Search the data output file for a specfic keyword and copy taht line as a dict
 def getData(dataFile,wantedValues):
     with open(dataFile) as inputFile:
         dictionary ={}
         # Read in each line
         for line in inputFile:
-            #Is this a blank line?
+            #Make sure its not a blank line
             if line.strip():
                 for key in wantedValues.keys():
                     # does the first value equal a key?
-                    if line.split(maxsplit=1)[0] == key:           
+                    if line.split(maxsplit=1)[0] == key:    
+                        # Grab Energy Bin, Efficency, AND uncertainty col 3
                         keyPass = line.split()
-                        dictionary[keyPass[0]] = keyPass[1]
-
+                        dictionary[keyPass[0]] = [keyPass[1],keyPass[2]]
+    return dictionary
 # =============================================================================
 #  Once fleshed out this function will pull in the dictionary keys and write
 #  out a new variable file. This will be used after new values are determined
@@ -114,7 +121,9 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
 #     Given Experimental Data
 # =============================================================================
 energyBins = createDictionary(energyFile)
-
+sourceInput = sourceDictionary(sourceFile)
+print(sourceInput)
+editFile(sourceInput,mcnpModelBase,outputFile)
 # =============================================================================
 # *****Execution Section *****
 # 1 Alter Model
@@ -152,7 +161,7 @@ while i <runtime :
     # =========================================================================
 	
     #Grab Data
-    
+    freshData = getData(mcnpOut, energyBins)
 # =============================================================================
 # 	abs(experimentalData - 12(gatheredData))/experimentalData
 # 	
@@ -162,7 +171,7 @@ while i <runtime :
     if (i == 15):
         break;
     
-    # 4 Create new Input Values
+    # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [-5.22,4.63899333]
     
     # =============================================================================
@@ -174,9 +183,3 @@ while i <runtime :
     # 5 Repeat
     i+=1
 print("Tolerance was met at: " + str(i))
-# =============================================================================
-# # Tests the edit dictionary and edit file 
-# holeDims = {'xHole':'5', 'yHole':'7778', 'zHole':'0', 'rHole':'4555'}
-# editDictionary(holeDims,'zHole', '789')
-# editFile(holeDims,mcnpModelBase,outputFile2)
-# =============================================================================
