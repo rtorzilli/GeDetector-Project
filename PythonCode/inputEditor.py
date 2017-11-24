@@ -25,9 +25,14 @@ from subprocess import Popen
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\Variable_HPGe_Mode.i"
 variablesToAdjust = "\Variable_Input.txt"
+# Name of the batch file to run
+mcnpBat = "runMCNP.bat"
 
 # Windows path for calls
 currentDir = osP.abspath(osP.dirname(__file__))
+
+# Windows path to runMCNP.bat
+batLocation = osP.join(currentDir, "..\")
 
 # =============================================================================
 # Dimensions needs to be columned
@@ -47,7 +52,7 @@ mcnpModelBase = osP.join(currentDir, "..\Model" + mcnpModel)
 outputFile = osP.join(currentDir, "..\Output" + mcnpModel)
 
 # Batch file that will be called
-runBat = Popen("test.bat", cwd=currentDir)
+runBat = Popen(mcnpBat, cwd=batLocation)
 
 # Opens file and replaces terms within that are matched in a defined dictionary
 def editFile (replace, inputFile, outputFile):
@@ -114,6 +119,11 @@ while i <runtime :
     # Note that MCNP will iterate the output files by default if they share the 
     # same name. That means we need to call the next iteration for the comparison
     # =========================================================================
+	
+	abs(experimentalData - 12(gatheredData))/experimentalData
+	
+	want <.1
+	
     if (i == 15):
         break;
     
