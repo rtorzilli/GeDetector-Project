@@ -70,7 +70,19 @@ def editFile (replace, inputFile, outputFile):
                 line = line.replace(src, target)
             outfile.write(line)
     return
-
+def mergeFile(baseFile, mergeFile,output):
+    filenames = [baseFile, mergeFile]
+    with open(output, 'w') as outfile:
+        for fname in filenames:
+            with open(fname) as infile:
+                for line in infile:
+                    outfile.write(line)
+        
+part1 =  os.path.join(currentDir,"..\Model"+"\part1.txt")  
+part2 =  os.path.join(currentDir,"..\Model"+"\part2.txt")
+part3 =  os.path.join(currentDir,"..\Model"+"\part3.txt")
+mergeFile(part1, part2,part3)             
+                
 # Creates a dictionary from a text file    
 def createDictionary (dimensionsFile):
     with open(dimensionsFile) as inDims:
@@ -78,17 +90,6 @@ def createDictionary (dimensionsFile):
         for line in inDims:
             keyPass = line.split()
             dictionary[keyPass[0]] = keyPass[1]
-    return dictionary
-
-# Create a dictionary to hold the position values
-def sourceDictionary(inputFile):
-    with open(inputFile) as inFile:
-        dictionary = {}
-        for line in inFile:
-            keyPass = line.split()
-            dictionary[keyPass[0]] = keyPass[1:]
-        # Alter Dictionary
-        
     return dictionary
 
 # Search the data output file for a specfic keyword and copy taht line as a dict

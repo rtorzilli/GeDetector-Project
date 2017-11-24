@@ -1,4 +1,0 @@
-xHole 0
-yHole 5
-zHole 30
-rHole 789789

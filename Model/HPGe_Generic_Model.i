@@ -100,7 +100,7 @@ c Lead Shield Lining:
    65        pz -0.26       $ Lower Copper Lining, 1.6mm thick(z=-0.26cm)
    66        cz 4.85        $ Tin Lining
    67        cz 5.01        $ Copper Lining
-cSource
+c **** Source Encapsulation: POSITION 1: 0cm above AL Casing and centered
    27        pz 13.6       $ Bottom of Mylar Under Source
    28        pz 13.62       $ Top of Mylar Under Source, 0.2mm thick
    29        cz 0.5         $ Mylar Cyinder, 1 mm wide
