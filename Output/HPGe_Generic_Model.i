@@ -12,7 +12,7 @@ c **** Detector:
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
 c ____________________________________________
 c ----------ADJUST----------
-    3     4      geDensity  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
+    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
 c ____________________________________________
     4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case  10  -0.001225
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
@@ -52,7 +52,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz sideDeadLayer        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 3.92        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
@@ -60,13 +60,13 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.84199333 to 13.07599333
 c -- Must be less than surface 13
-    9        pz topDeadLayer $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 12.86799333 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz geLength  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 5.296220666  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:

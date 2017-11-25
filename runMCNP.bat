@@ -9,7 +9,7 @@ rem @set DATAPATH=C:\Users\rober\Documents\Software_Tools\MCNP6.1\MCNP_DATA
 @set DISPLAY=localhost:0
 rem Determine location of this Batch file
 SET Path_Var = %~dp0
-mcnp6 i=%Path_Var%Output\Variable_HPGe_Mode.i o=%Path_Var%MCNP_Output\Variable_HPGe_Mode
+mcnp6 i=%Path_Var%Output\HPGe_Generic_Model.i o=%Path_Var%MCNP_Output\HPGe_Output_Model
 
 rem delte the temp run file so it doesnt clutter top directory
 del %Path_Var%runtpe

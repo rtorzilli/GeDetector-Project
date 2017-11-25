@@ -12,7 +12,7 @@ c **** Detector:
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
 c ____________________________________________
 c ----------ADJUST----------
-    3     4      geDensity  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
+    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
 c ____________________________________________
     4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case  10  -0.001225
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
@@ -25,7 +25,7 @@ c ____________________________________________
                        #(-93 94 -92 8) #(-16 91 -92 8) imp:p=1  $ Vacuum Layer
    12     3       -2.7  (-11 10 -12 15):(-13 12 -11)  imp:p=1  $ Al Housing
 c **** Source:
-   13     1      -1.38  27 -29 -28                    imp:p=1  $ Mylar Shield on Source
+   13     1      -1.38  (27 -29 -28)                    imp:p=1  $ Mylar Shield on Source
 c **** Shielding:
    14    11     -11.34  (61 -51 44 -53 ):(-65 44 67 -61 ):   
                         (63 -53 -51 ):(67 -51 -65 44) imp:p=1  $ Lead Shield
@@ -34,8 +34,7 @@ c **** Shielding:
    16     7     -8.96   (60 -61 65 -63 ):(-64 65 66 -61 ):   
                         (62 -63 -61 ):(66 -67 -65 44) imp:p=1  $ Copper Lining of Lead Shield
    17     0             (-15 44 -11 ):-44 :51 :53     imp:p=0  $ Void
-   18    10 -0.001225   (15 11 -13 -50 ):(13 -50 -52 )
-                        #(27 -29 -28)                 imp:p=1  $ Air Inside Case
+   18    10 -0.001225   (15 11 -13 -50 #(27 -28 -29)):(13 -50 -52 )  imp:p=1  $ Air Inside Case
 c (negative numbers represent g/cm^3)
 
 c ****************************************************************************
@@ -52,7 +51,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz sideDeadLayer        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 4.02        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
@@ -60,13 +59,13 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.84199333 to 13.07599333
 c -- Must be less than surface 13
-    9        pz topDeadLayer $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 12.95899333 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz geLength  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 4.63899333  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
@@ -100,10 +99,10 @@ c Lead Shield Lining:
    65        pz -0.26       $ Lower Copper Lining, 1.6mm thick(z=-0.26cm)
    66        cz 4.85        $ Tin Lining
    67        cz 5.01        $ Copper Lining
-c **** Source Encapsulation: POSITION 1: 0cm above AL Casing and centered
-   27        pz 13.6       $ Bottom of Mylar Under Source
-   28        pz 13.62       $ Top of Mylar Under Source, 0.2mm thick
-   29        cz 0.5         $ Mylar Cyinder, 1 mm wide
+c **** Source Encapsulation: POSITION 4: 6cm down side of Al Casing, adjusted cell
+    27        px 4.75       $ Bottom of Mylar Under Source
+    28        px 4.77        $ Top of Mylar Under Source, 0.2mm thick
+    29        c/x 0 7.6 0.5         $ Mylar Cyinder, 1 mm wide
 
 c ****************************************************************************
 c ************************* Data Cards ***************************************
@@ -168,12 +167,12 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=0 y=0 z=13.61
+sdef erg=d3 par=2 x=4.76 y=0 z=7.6
 SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 1e3
+nps 5e6
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
