@@ -230,7 +230,7 @@ for i in range(TDL):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestTopDeadLayer = topDeadLayer[i]
-    print("Average Error was: " +str(averageError)+"\n")
+    #print("Average Error was: " +str(averageError)+"\n")
     # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [geDensity[0],geLength[0],topDeadLayer[i],
                           sideDeadLayer[0]]
@@ -247,8 +247,8 @@ for i in range(TDL):
     createFile(freshData,relError,averageError,dataOut+str(i))
     
     # Check first if file exists if it does rename it
-    if os.path.isfile(dataOut):
-        os.rename(dataOut,dataOut+str(i))
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename[0]+"TopDeadLayer_"+str(i))
 #Alter Dim File to best found 
 newDimensionValues = [geDensity[0],geLength[0],bestTopDeadLayer,
                       sideDeadLayer[0]]
@@ -283,7 +283,7 @@ for i in range(GL):
     # Record Values
     dataOut = dataOutLoc[0]+'\Data_Pos1_'+'CrystalLength_'
     createFile(freshData,relError,averageError,dataOut+str(i))
-    print("Average Error was: " +str(averageError)+"\n")
+    #print("Average Error was: " +str(averageError)+"\n")
     
     # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [geDensity[0],geLength[i],bestTopDeadLayer,
@@ -330,7 +330,7 @@ for i in range(CR):
     # Record Values
     dataOut = dataOutLoc[0]+'\Data_Pos1_'+'SideDeadLayer_'
     createFile(freshData,relError,averageError,dataOut+str(i))
-    print("Average Error was: " +str(averageError)+"\n")
+    #print("Average Error was: " +str(averageError)+"\n")
     
     # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
@@ -373,7 +373,7 @@ for i in range(n):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestGeDensity = geDensity[i]
-    print("Average Error was: " +str(averageError)+"\n")
+    #print("Average Error was: " +str(averageError)+"\n")
     # Record Values
     dataOut = dataOutLoc[0]+'\Data_Pos1_'+'GeDensity_'
     createFile(freshData,relError,averageError,dataOut+str(i))
@@ -410,7 +410,7 @@ if (os.path.isfile(mcnpOut)):
     os.rename(mcnpOut,mcnpOutRename[0])
 relError = relativeErr(energyBins,freshData)
 averageError = sum(relError.values())/len(relError)
-print("Average Error for Best Values: " +str(averageError)+"\n")
+#print("Average Error for Best Values: " +str(averageError)+"\n")
 # Record Values
-dataOut = dataOutLoc[0]+'\Data_Pos1_'
+dataOut = dataOutLoc[0]+'\Data_Pos1'
 createFile(freshData,relError,averageError,dataOut)

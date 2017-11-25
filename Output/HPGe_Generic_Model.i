@@ -60,13 +60,13 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.84199333 to 13.07599333
 c -- Must be less than surface 13
-    9        pz 12.86799333 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 12.1195548144 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz 5.296220666  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 5.483999333  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
@@ -173,7 +173,7 @@ SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 1e3
+nps 1e6
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
