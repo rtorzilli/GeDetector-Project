@@ -87,8 +87,16 @@ def mergeFile(baseFile, mergeFile,output):
 #Create a file with data, rel err, and the average error
 def createFile(dataDict,relErrDict,avgErr,ouput):
     with open(ouput,'w') as outfile:
-        print(dataDict+"\n"+relErrDict+'\n'+avgErr, file=outfile)
-                
+        outfile.write('Energy Bin    Value   Uncertainity\n')
+        for key,value in dataDict.items():
+            outfile.write("{0} {1} {2}\n".format(str(key), str(value[0]),
+                          str(value[1]))) 
+        outfile.write("\nEnergy Bin   Relative Error\n")
+        for key,value in relErrDict.items():
+            outfile.write("{0} {1}\n".format(str(key), str(value))) 
+        outfile.write("\nAverage Error\n")
+        outfile.write(str(avgErr))
+    outfile.close()
 # Creates a dictionary from a text file    
 def createDictionary (dimensionsFile):
     with open(dimensionsFile) as inDims:
@@ -151,7 +159,7 @@ energyBins = createDictionary(energyFile)
 #Iteration ranges
 
 TDL=10
-topDeadLayerMin = 12.84199333
+topDeadLayerMin = 12.0
 topDeadLayerMax = 13.07599333
 topDeadLayer=np.linspace(topDeadLayerMin,topDeadLayerMax,TDL)
 
@@ -235,12 +243,12 @@ for i in range(TDL):
 
     # 5 Repeat/Clean Up/Record
     # Record Values
-    dataOut = dataOutLoc+'\Data_Pos1_'+'\TopDeadLayer_'+str(i)
-    createFile(freshData,relError,averageError,dataOut)
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'TopDeadLayer_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
+    
     # Check first if file exists if it does rename it
-    if (os.path.isfile(mcnpOut)):
-        os.rename(mcnpOut,mcnpOutRename[0]+"TopDeadLayer_"+str(i))
-
+    if os.path.isfile(dataOut):
+        os.rename(dataOut,dataOut+str(i))
 #Alter Dim File to best found 
 newDimensionValues = [geDensity[0],geLength[0],bestTopDeadLayer,
                       sideDeadLayer[0]]
@@ -272,7 +280,9 @@ for i in range(GL):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestGeLength = geLength[i]
-    
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'CrystalLength_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
     print("Average Error was: " +str(averageError)+"\n")
     
     # 4 Create new Input Values (Based off predetermeind Iteration)
@@ -316,6 +326,10 @@ for i in range(CR):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestSideDeadLayer = sideDeadLayer[i]
+        
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'SideDeadLayer_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
     print("Average Error was: " +str(averageError)+"\n")
     
     # 4 Create new Input Values (Based off predetermeind Iteration)
@@ -360,7 +374,9 @@ for i in range(n):
         oldAvgErr=averageError
         bestGeDensity = geDensity[i]
     print("Average Error was: " +str(averageError)+"\n")
-    
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'GeDensity_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
     # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [geDensity[i],bestGeLength,bestTopDeadLayer,
                           bestSideDeadLayer]
@@ -395,3 +411,6 @@ if (os.path.isfile(mcnpOut)):
 relError = relativeErr(energyBins,freshData)
 averageError = sum(relError.values())/len(relError)
 print("Average Error for Best Values: " +str(averageError)+"\n")
+# Record Values
+dataOut = dataOutLoc[0]+'\Data_Pos1_'
+createFile(freshData,relError,averageError,dataOut)
