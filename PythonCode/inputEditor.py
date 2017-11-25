@@ -28,7 +28,6 @@ mcnpModel = "\HPGe_Generic_Model.i"
 variablesToAdjust = "\Variable_Input.txt"
 compareValues = ["\Pos_1_experimental.txt","\Pos_2_experimental.txt",
                  "\Pos_3_experimental.txt","\Pos_5_experimental.txt"]
-
 #Names of files to merge
 fileNames = ["\HPGe_Generic_Model.i","\Pos_1_0cm_centered.i",
              "\Pos_2_0cm_flushed.i","\Pos_3_7cm_centered.i","Pos_5_offset.i"]
@@ -49,6 +48,8 @@ batLocation = os.path.split(currentDir)[0]
 mcnpOut=batLocation+'\MCNP_Output\HPGe_Output_Model'
 mcnpOutRename = [batLocation+'\MCNP_Output\Position1\HPGe_Output_Model_',
                        batLocation+'\MCNP_Output\Position2\HPGe_Output_Model_']
+# Data Summary Output Locations
+dataOutLoc = [batLocation+ '\MCNP_Output\Position1\Data_and_RelativeErr']
 
 # =============================================================================
 # Dimensions needs to be columned
@@ -82,6 +83,11 @@ def mergeFile(baseFile, mergeFile,output):
             with open(fname) as infile:
                 for line in infile:
                     outfile.write(line)           
+
+#Create a file with data, rel err, and the average error
+def createFile(dataDict,relErrDict,avgErr,ouput):
+    with open(ouput,'w') as outfile:
+        print(dataDict+"\n"+relErrDict+'\n'+avgErr, file=outfile)
                 
 # Creates a dictionary from a text file    
 def createDictionary (dimensionsFile):
@@ -227,8 +233,11 @@ for i in range(TDL):
     # =============================================================================
     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
-    # 5 Repeat/Clean Up
-        # Check first if file exists if it does rename it
+    # 5 Repeat/Clean Up/Record
+    # Record Values
+    dataOut = dataOutLoc+'\Data_Pos1_'+'\TopDeadLayer_'+str(i)
+    createFile(freshData,relError,averageError,dataOut)
+    # Check first if file exists if it does rename it
     if (os.path.isfile(mcnpOut)):
         os.rename(mcnpOut,mcnpOutRename[0]+"TopDeadLayer_"+str(i))
 
@@ -263,6 +272,7 @@ for i in range(GL):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestGeLength = geLength[i]
+    
     print("Average Error was: " +str(averageError)+"\n")
     
     # 4 Create new Input Values (Based off predetermeind Iteration)
@@ -381,7 +391,7 @@ runBat.wait()
     #Grab Data
 freshData = getData(mcnpOut, energyBins)
 if (os.path.isfile(mcnpOut)):
-    os.rename(mcnpOut,mcnpOutRename[0]+"GeDensity"+str(i))
+    os.rename(mcnpOut,mcnpOutRename[0])
 relError = relativeErr(energyBins,freshData)
 averageError = sum(relError.values())/len(relError)
 print("Average Error for Best Values: " +str(averageError)+"\n")
