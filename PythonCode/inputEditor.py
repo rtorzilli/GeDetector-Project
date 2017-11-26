@@ -155,22 +155,22 @@ energyBins = createDictionary(energyFile)
 
 #Iteration ranges
 
-TDL=10
-topDeadLayerMin = 12.0
+TDL=100
+topDeadLayerMin = 11.5
 topDeadLayerMax = 13.07599333
 topDeadLayer=np.linspace(topDeadLayerMin,topDeadLayerMax,TDL)
 
-GL = 10
+GL = 25
 geLengthMin = 3.79399133
 geLengthMax = 5.483999333
 geLength= np.linspace(geLengthMin,geLengthMax,GL)
 
-CR=10
+CR=15
 sideDeadLayerMin = 3.92
 sideDeadLayerMax = 4.12
 sideDeadLayer = np.linspace(sideDeadLayerMin,sideDeadLayerMax,CR)
 
-n=3
+n=5
 geDensityMin = -5.32
 geDensityMax = -5.35
 geDensity = np.linspace(geDensityMin,geDensityMax,n)
@@ -414,3 +414,205 @@ for posSource in fileNames[1:]:
 	# Record Values
 	dataOut = dataOutLoc[0]+'\Data_Pos1'
 	createFile(freshData,relError,averageError,dataOut)
+    # 3 Compare Values
+# =============================================================================
+#     Note that we rename the output files so the last file ran is the one without
+#     a number assigned to it
+# =============================================================================
+	
+    #Grab Data
+    freshData = getData(mcnpOut, energyBins)
+    
+    relError = relativeErr(energyBins,freshData)
+    
+    # Break out?
+    averageError = sum(relError.values())/len(relError)
+    if averageError<.01:
+        break
+    elif averageError<oldAvgErr:
+        oldAvgErr=averageError
+        bestTopDeadLayer = topDeadLayer[i]
+    print("Average Error was: " +str(averageError)+"\n")
+    # 4 Create new Input Values (Based off predetermeind Iteration)
+    newDimensionValues = [geDensity[0],geLength[0],topDeadLayer[i],
+                          sideDeadLayer[0]]
+    
+    # =============================================================================
+    # Change the value to the next one (use a loop) then place that value into 
+    # the dimensions File used to edit the model
+    # =============================================================================
+    recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+    # 5 Repeat/Clean Up/Record
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'TopDeadLayer_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
+    
+    # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename[0]+"TopDeadLayer_"+str(i))
+#Alter Dim File to best found 
+newDimensionValues = [geDensity[0],geLength[0],bestTopDeadLayer,
+                      sideDeadLayer[0]]
+recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+oldAvgErr = 999
+# ******* Ge Crystal Length
+for i in range(GL):    
+    # 1 Altar Model 
+    detectorDimensions = createDictionary(dimensionsFile)
+    editFile(detectorDimensions,mcnpModelBase,outputFile)
+    
+    # 2 Run "MCNP" currently a test bat file
+    # Batch file that will be called
+    runBat = subP.Popen(mcnpBat, cwd=batLocation, shell=True)
+    runBat.communicate()
+    runBat.wait()
+    
+    # 3 Compare Values
+        #Grab Data
+    freshData = getData(mcnpOut, energyBins)
+    
+    relError = relativeErr(energyBins,freshData)
+    
+    # Break out?
+    averageError = sum(relError.values())/len(relError)
+    if averageError<.01:
+        break
+    elif averageError<oldAvgErr:
+        oldAvgErr=averageError
+        bestGeLength = geLength[i]
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'CrystalLength_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
+    #print("Average Error was: " +str(averageError)+"\n")
+    
+    # 4 Create new Input Values (Based off predetermeind Iteration)
+    newDimensionValues = [geDensity[0],geLength[i],bestTopDeadLayer,
+                          sideDeadLayer[0]]
+    recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+    # 5 Repeat/Clean Up
+        # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename[0]+"CrystalLength_"+str(i))
+
+#Alter Dim File to best found 
+newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
+                      sideDeadLayer[0]]
+recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+oldAvgErr = 999     
+# ******* Crystal Radius (Increasing Dead Layer on sides constant total radius)
+for i in range(CR):    
+    # 1 Altar Model 
+    detectorDimensions = createDictionary(dimensionsFile)
+    editFile(detectorDimensions,mcnpModelBase,outputFile)
+    
+    # 2 Run "MCNP" currently a test bat file
+    # Batch file that will be called
+    runBat = subP.Popen(mcnpBat, cwd=batLocation, shell=True)
+    runBat.communicate()
+    runBat.wait()
+    
+    # 3 Compare Values
+        #Grab Data
+    freshData = getData(mcnpOut, energyBins)
+    
+    relError = relativeErr(energyBins,freshData)
+    
+    # Break out?
+    averageError = sum(relError.values())/len(relError)
+    if averageError<.01:
+        break
+    elif averageError<oldAvgErr:
+        oldAvgErr=averageError
+        bestSideDeadLayer = sideDeadLayer[i]
+        
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'SideDeadLayer_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
+    #print("Average Error was: " +str(averageError)+"\n")
+    
+    # 4 Create new Input Values (Based off predetermeind Iteration)
+    newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
+                          sideDeadLayer[i]]
+    recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+    # 5 Repeat/Clean Up
+        # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename[0]+"SideDeadLayer_"+str(i))
+
+#Alter Dim File to best found 
+newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
+                      bestSideDeadLayer]
+recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+# Change Density if we are close
+oldAvgErr = 999   
+for i in range(n):    
+    # 1 Altar Model 
+    detectorDimensions = createDictionary(dimensionsFile)
+    editFile(detectorDimensions,mcnpModelBase,outputFile)
+    
+    # 2 Run "MCNP" currently a test bat file
+    # Batch file that will be called
+    runBat = subP.Popen(mcnpBat, cwd=batLocation, shell=True)
+    runBat.communicate()
+    runBat.wait()
+    
+    # 3 Compare Values
+        #Grab Data
+    freshData = getData(mcnpOut, energyBins)
+    
+    relError = relativeErr(energyBins,freshData)
+    
+    # Break out?
+    averageError = sum(relError.values())/len(relError)
+    if averageError<.01:
+        break
+    elif averageError<oldAvgErr:
+        oldAvgErr=averageError
+        bestGeDensity = geDensity[i]
+    #print("Average Error was: " +str(averageError)+"\n")
+    # Record Values
+    dataOut = dataOutLoc[0]+'\Data_Pos1_'+'GeDensity_'
+    createFile(freshData,relError,averageError,dataOut+str(i))
+    # 4 Create new Input Values (Based off predetermeind Iteration)
+    newDimensionValues = [geDensity[i],bestGeLength,bestTopDeadLayer,
+                          bestSideDeadLayer]
+    recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+    # 5 Repeat/Clean Up
+        # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename[0]+"GeDensity_"+str(i))
+
+#Alter Dim File to best found 
+newDimensionValues = [bestGeDensity,bestGeLength,bestTopDeadLayer,
+                      bestSideDeadLayer]
+recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+
+# Using best values what is the best relative error?
+# 1 Altar Model 
+detectorDimensions = createDictionary(dimensionsFile)
+editFile(detectorDimensions,mcnpModelBase,outputFile)
+
+# 2 Run "MCNP" currently a test bat file
+# Batch file that will be called
+runBat = subP.Popen(mcnpBat, cwd=batLocation, shell=True)
+runBat.communicate()
+runBat.wait()
+
+# 3 Compare Values
+    #Grab Data
+freshData = getData(mcnpOut, energyBins)
+if (os.path.isfile(mcnpOut)):
+    os.rename(mcnpOut,mcnpOutRename[0])
+relError = relativeErr(energyBins,freshData)
+averageError = sum(relError.values())/len(relError)
+#print("Average Error for Best Values: " +str(averageError)+"\n")
+# Record Values
+dataOut = dataOutLoc[0]+'\Data_Pos1'
+createFile(freshData,relError,averageError,dataOut)
