@@ -52,7 +52,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz 3.92        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 4.09142857143        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
@@ -60,13 +60,13 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.84199333 to 13.07599333
 c -- Must be less than surface 13
-    9        pz 12.1195548144 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 11.5795956227 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz 5.483999333  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 3.79399133  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
