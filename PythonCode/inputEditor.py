@@ -158,22 +158,22 @@ energyBins = createDictionary(energyFile)
 
 #Iteration ranges
 
-TDL=10
-topDeadLayerMin = 12.0
+TDL=100
+topDeadLayerMin = 11.5
 topDeadLayerMax = 13.07599333
 topDeadLayer=np.linspace(topDeadLayerMin,topDeadLayerMax,TDL)
 
-GL = 10
+GL = 25
 geLengthMin = 3.79399133
 geLengthMax = 5.483999333
 geLength= np.linspace(geLengthMin,geLengthMax,GL)
 
-CR=10
+CR=15
 sideDeadLayerMin = 3.92
 sideDeadLayerMax = 4.12
 sideDeadLayer = np.linspace(sideDeadLayerMin,sideDeadLayerMax,CR)
 
-n=3
+n=5
 geDensityMin = -5.32
 geDensityMax = -5.35
 geDensity = np.linspace(geDensityMin,geDensityMax,n)
@@ -230,7 +230,7 @@ for i in range(TDL):
     elif averageError<oldAvgErr:
         oldAvgErr=averageError
         bestTopDeadLayer = topDeadLayer[i]
-    #print("Average Error was: " +str(averageError)+"\n")
+    print("Average Error was: " +str(averageError)+"\n")
     # 4 Create new Input Values (Based off predetermeind Iteration)
     newDimensionValues = [geDensity[0],geLength[0],topDeadLayer[i],
                           sideDeadLayer[0]]
