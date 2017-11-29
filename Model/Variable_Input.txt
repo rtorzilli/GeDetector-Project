@@ -1,4 +1,4 @@
 geDensity -5.32
-geLength 3.79399133
-topDeadLayer 11.5795956227
-sideDeadLayer 4.09142857143
+geLength 4.63899333
+topDeadLayer 12.95899333
+sideDeadLayer 4.02

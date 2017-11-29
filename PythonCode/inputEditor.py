@@ -6,14 +6,16 @@ Created on Wed Nov  8 18:34:19 2017
 
 To run as intended the user needs to provide the following:
 	A MCNP base input deck with variables to adjust
-	A txt document dictating what each variable name in the MCNP model is
+	A txt document dictating what each variable name in the MCNP model is as well as their 
+	default values
+	A txt document of the wanted energy bins and their values to calculate error against
 	
 This program will output the following:
 	A runnable MCNP input file to be used with MCNP
-	An altered txt file for the variables for the purpose of optimizing
+	Summary Data files of the energies, provided bins, and relative error
 	
-This script defines methods first since it may have to use a few while creating 
-and reading file names in future iterations.
+This script defines path variables in multiple areas (IE not all up front) in order to minimize SLOC
+	and ensure loops work correctly
 
 This script has many fail points currently, use with caution
 	For Stability the keywords of the Variable File have been hard coded
@@ -26,6 +28,7 @@ import numpy as np
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\HPGe_Generic_Model.i"
 variablesToAdjust = "\Variable_Input.txt"
+valuesToIterateOver = '\IterationFile.txt'
 
 # Name of the batch file to run
 mcnpBat = "runMCNP.bat"
@@ -35,6 +38,23 @@ currentDir = os.path.abspath(os.path.dirname(__file__))
 
 # Windows path to runMCNP.bat/parent directory
 parentDir = os.path.split(currentDir)[0]
+
+# =============================================================================
+# User Defined Output file -- Change the runMCNP bat as well, 
+#		daughter is in the Parent loop below
+# =============================================================================
+mcnpOut=parentDir+'\MCNP_Output\HPGe_Output_Model'
+
+# Where Recorded Variable output will be placed (not nessearcily the best one)
+varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
+
+# =============================================================================
+# These are the keywords in a set order for the purpose of manipulation later
+# =============================================================================
+dimensionKeys = ['geDensity','geLength','topDeadLayer','sideDeadLayer']
+iterationKeys = ['topDeadLayerMin' 'topDeadLayerMax' 'geLengthMin' 'geLengthMax'
+                 'sideDeadLayerMin' 'sideDeadLayerMax' 'geDensityMin' 
+                 'geDensityMax']
 
 # ORDER IS VERY IMPORTANT FOR THESE FOUR LISTS
 # Make sure there are no empty lines at the end of these files or an index error will occur
@@ -50,30 +70,25 @@ dataOutLoc = [parentDir+ '\MCNP_Output\Position1\Data_and_RelativeErr\Data_Pos1_
 			  parentDir+ '\MCNP_Output\Position3\Data_and_RelativeErr\Data_Pos3_',
 			  parentDir+ '\MCNP_Output\Position5\Data_and_RelativeErr\Data_Pos5_']
 
-# Where Recorded Variable output will be placed (not nessearcily the best one)
-varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
 
-#User Defined Output file -- Change the runMCNP bat as well, daughter is in the Parent loop below
-mcnpOut=parentDir+'\MCNP_Output\HPGe_Output_Model'
 
 # =============================================================================
 # Dimensions needs to be columned
 # The First column must match the variable place holder in the model exactly
-# The Second column is the value
+# The Second column is the default value
 # There must be no extra lines 
 # =============================================================================
 dimensionsFile = os.path.join(currentDir, "..\Model" + variablesToAdjust)
-
-# These are the keywords in a set order for the purpose of manipulation later
-dimensionKeys = ['geDensity','geLength','topDeadLayer','sideDeadLayer']
+iterationFile = os.path.join(currentDir, "..\Model" + valuesToIterateOver)
 
 # This should be the model of the MCNP 
 mcnpModelBase = os.path.join(currentDir, "..\Model" + mcnpModel)
 
-# Output File, this will be renamed by the batch file
-outputFile = os.path.join(currentDir, "..\Output" + mcnpModel)
+# Location of created MCNP Input Deck
+outputFile = os.path.join(currentDir, "..\InputDeck" + mcnpModel)
 
 # Opens file and replaces terms within that are matched in a defined dictionary
+# Primarily used to replace the parameters in our base model with actual numerical values
 def editFile (replace, inputFile, outputFile):
 	with open(inputFile) as infile, open(outputFile, 'w') as outfile:
 		for line in infile:
@@ -81,6 +96,9 @@ def editFile (replace, inputFile, outputFile):
 				line = line.replace(src, target)
 			outfile.write(line)
 	return
+	
+# Merges the two files, used primarly to generate the base model for a specific
+# source position.	
 def mergeFile(baseFile, mergeFile,output):
 	filenames = [baseFile, mergeFile]
 	with open(output, 'w') as outfile:
@@ -102,7 +120,9 @@ def createFile(dataDict,relErrDict,avgErr,ouput):
 		outfile.write("\nAverage Error\n")
 		outfile.write(str(avgErr))
 	outfile.close()
-# Creates a dictionary from a text file    
+
+# Creates a dictionary from a text file with two columns 
+#     First column is keyword second column is corresponding key value   
 def createDictionary (dimensionsFile):
 	with open(dimensionsFile) as inDims:
 		dictionary = {}
@@ -111,7 +131,7 @@ def createDictionary (dimensionsFile):
 			dictionary[keyPass[0]] = keyPass[1]
 	return dictionary
 
-# Search the data output file for a specfic keyword and copy taht line as a dict
+# Search the data output file for a specfic keyword and copy that line as a dict
 def getData(dataFile,wantedValues):
 	with open(dataFile) as inputFile:
 		dictionary ={}
@@ -141,44 +161,50 @@ def relativeErr(experimentalData,outputData):
 	return errorDict
 
 # =============================================================================
-#  Once fleshed out this function will pull in the dictionary keys and write
-#  out a new variable file. This will be used after new values are determined
-#  Either through numerical analysis or from a for loop iterating through
+# This function creates a new variable input file. Currently it is only used 
+# to get the default values before iteration of a new source position
+# this decsiion was made in an attempt to reduce write time since the 
+# mcnp out file has the input deck in it.
 # =============================================================================
 def recreateDimFile(valuesToChange,newValue,fileIn):
 	with open(fileIn, "w")as text_file:
-		print(valuesToChange[0] + " "+ str(newValue[0]) + 
-			  "\n" + valuesToChange[1] + " " + str(newValue[1]) +
-			  "\n" + valuesToChange[2] + " " + str(newValue[2]) +
-			  "\n" + valuesToChange[3] + " " + str(newValue[3]) 
-			  , file=text_file)
- 
+		for i in range(len(valuesToChange)):
+			text_file.write(valuesToChange[i]+ " " + str(newValue[i]+'\n'))
+		text_file.close()
+
 # =============================================================================
 #     Determined Iteration Range
 # =============================================================================
+# Get default values
+defaultValues = createDictionary(dimensionsFile)
+iterationValues = createDictionary(iterationFile)
 TDL=1
-topDLDefault = 12.95899333
-topDeadLayerMin = 11.5
-topDeadLayerMax = 13.07599333
-topDeadLayer=np.linspace(topDeadLayerMin,topDeadLayerMax,TDL)
+if TDL == 0:
+    print("Must be at least 1")
+    TDL=1
+topDeadLayer=np.linspace(float(iterationValues['topDeadLayerMin']),
+                         float(iterationValues['topDeadLayerMax']),TDL)
 
 GL = 1
-geDefault = 4.63899333 
-geLengthMin = 3.79399133
-geLengthMax = 5.483999333
-geLength= np.linspace(geLengthMin,geLengthMax,GL)
+if GL == 0:
+    print("Must be at least 1")
+    GL=1
+geLength= np.linspace(float(iterationValues['geLengthMin']),
+                      float(iterationValues['geLengthMax']),GL)
 
-CR=1
-sideDLDefault = 4.02
-sideDeadLayerMin = 3.92
-sideDeadLayerMax = 4.12
-sideDeadLayer = np.linspace(sideDeadLayerMin,sideDeadLayerMax,CR)
+CR= 10
+if CR == 0:
+    print("Must be at least 1")
+    CR=1
+sideDeadLayer = np.linspace(float(iterationValues['sideDeadLayerMin']),
+                            float(iterationValues['sideDeadLayerMax']),CR)
 
-n=1
-geDensityDefault = -5.32
-geDensityMin = -5.32
-geDensityMax = -5.35
-geDensity = np.linspace(geDensityMin,geDensityMax,n)
+n= 3
+if n == 0:
+    print("Must be at least 1")
+    n=1
+geDensity = np.linspace(float(iterationValues['geDensityMin']),
+                        float(iterationValues['geDensityMax']),n)
 
 # Used to change folders
 currPos = 0
@@ -193,9 +219,9 @@ for posSource in fileNames[1:]:
 	
 	mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
 	
-	newDimensionValues = [geDensityDefault,geDefault,topDLDefault,
-					  sideDLDefault]
-	recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
+	resetDimValues = [defaultValues['geDensity'],defaultValues['geLength'],
+					  defaultValues['topDeadLayer'],defaultValues['sideDeadLayer']]
+	recreateDimFile(dimensionKeys,resetDimValues,dimensionsFile)
 	
 	# This merges the source to variable model with the source model
 	# Files that will be merged to create base model currently just the base 

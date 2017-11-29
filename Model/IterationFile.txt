@@ -1,0 +1,8 @@
+topDeadLayerMin 11.5
+topDeadLayerMax 13.07599333
+geLengthMin 3.79399133
+geLengthMax 5.483999333
+sideDeadLayerMin 3.92
+sideDeadLayerMax 4.12
+geDensityMin -5.32
+geDensityMax -5.35
