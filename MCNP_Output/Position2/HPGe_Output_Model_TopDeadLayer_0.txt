@@ -30,9 +30,9 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     11/27/17 23:40:08 
- *************************************************************************                 probid =  11/27/17 23:40:08 
- i=Output\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                   
+1mcnp     version 6     ld=05/08/13                     11/29/17 00:25:51 
+ *************************************************************************                 probid =  11/29/17 00:25:51 
+ i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
   warning.  Physics models disabled.
@@ -306,8 +306,8 @@
 1problem summary                                                                                                           
 
       run terminated when     5000000  particle histories were done.
-+                                                                                                    11/27/17 23:41:16 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  11/27/17 23:40:08 
++                                                                                                    11/29/17 00:26:52 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  11/29/17 00:25:51 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -342,9 +342,9 @@
    total photon collisions                  16732416          capture or escape 3.8755E-02          wc1   0.0000E+00
                                                               any termination   3.8148E-02          wc2   0.0000E+00
 
- computer time so far in this run     1.12 minutes            maximum number ever in bank         9
- computer time in mcrun               1.12 minutes            bank overflows to backup file       0
- source particles per minute            4.4693E+06
+ computer time so far in this run     1.03 minutes            maximum number ever in bank         9
+ computer time in mcrun               1.02 minutes            bank overflows to backup file       0
+ source particles per minute            4.8818E+06
  random numbers generated                176798721            most random numbers used was         611 in history     1247989
 
  range of sampled source weights = 1.0000E+00 to 1.0000E+00
@@ -433,14 +433,14 @@
       relative error                  1.14727E-03             1.14728E-03                     0.000010
       variance of the variance        2.14313E-06             2.14409E-06                     0.000450
       shifted center                  1.75237E-01             1.75237E-01                     0.000000
-      figure of merit                 6.79102E+05             6.79088E+05                    -0.000020
+      figure of merit                 7.41780E+05             7.41765E+05                    -0.000020
 
  the estimated slope of the  48 largest  tallies starting at  4.50000E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.469E+06)*( 3.898E-01)**2 = (4.469E+06)*(1.519E-01) = 6.791E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.882E+06)*( 3.898E-01)**2 = (4.882E+06)*(1.519E-01) = 7.418E+05
 
 1tally       18        nps =     5000000
            tally type 8    pulse height distribution.                   units   number         
@@ -8687,14 +8687,14 @@
       relative error                  1.14727E-03             1.14728E-03                     0.000010
       variance of the variance        2.14313E-06             2.14409E-06                     0.000450
       shifted center                  1.75237E-01             1.75237E-01                     0.000000
-      figure of merit                 6.79102E+05             6.79088E+05                    -0.000020
+      figure of merit                 7.41780E+05             7.41765E+05                    -0.000020
 
  the estimated slope of the  48 largest  tallies starting at  4.50000E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.469E+06)*( 3.898E-01)**2 = (4.469E+06)*(1.519E-01) = 6.791E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.882E+06)*( 3.898E-01)**2 = (4.882E+06)*(1.519E-01) = 7.418E+05
 
 1status of the statistical checks used to form confidence intervals for the mean for each tally bin
 
@@ -8717,30 +8717,30 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-       256000   1.7744E-01 0.0050 0.0000 10.0  681488   1.7744E-01 0.0050 0.0000 10.0  681488
-       512000   1.7589E-01 0.0036 0.0000 10.0  683066   1.7589E-01 0.0036 0.0000 10.0  683066
-       768000   1.7546E-01 0.0029 0.0000 10.0  681918   1.7546E-01 0.0029 0.0000 10.0  681918
-      1024000   1.7512E-01 0.0025 0.0000 10.0  681611   1.7512E-01 0.0025 0.0000 10.0  681611
-      1280000   1.7519E-01 0.0023 0.0000 10.0  677493   1.7519E-01 0.0023 0.0000 10.0  677493
-      1536000   1.7509E-01 0.0021 0.0000 10.0  678177   1.7509E-01 0.0021 0.0000 10.0  678177
-      1792000   1.7509E-01 0.0019 0.0000 10.0  676980   1.7509E-01 0.0019 0.0000 10.0  676980
-      2048000   1.7488E-01 0.0018 0.0000 10.0  677082   1.7488E-01 0.0018 0.0000 10.0  677082
-      2304000   1.7509E-01 0.0017 0.0000 10.0  677341   1.7509E-01 0.0017 0.0000 10.0  677341
-      2560000   1.7502E-01 0.0016 0.0000 10.0  677269   1.7502E-01 0.0016 0.0000 10.0  677269
-      2816000   1.7484E-01 0.0015 0.0000 10.0  676423   1.7484E-01 0.0015 0.0000 10.0  676423
-      3072000   1.7486E-01 0.0015 0.0000 10.0  676940   1.7486E-01 0.0015 0.0000 10.0  676940
-      3328000   1.7493E-01 0.0014 0.0000 10.0  677931   1.7493E-01 0.0014 0.0000 10.0  677931
-      3584000   1.7491E-01 0.0014 0.0000 10.0  678047   1.7491E-01 0.0014 0.0000 10.0  678047
-      3840000   1.7499E-01 0.0013 0.0000 10.0  678164   1.7499E-01 0.0013 0.0000 10.0  678164
-      4096000   1.7499E-01 0.0013 0.0000 10.0  677980   1.7499E-01 0.0013 0.0000 10.0  677980
-      4352000   1.7512E-01 0.0012 0.0000 10.0  677905   1.7512E-01 0.0012 0.0000 10.0  677905
-      4608000   1.7514E-01 0.0012 0.0000 10.0  678282   1.7514E-01 0.0012 0.0000 10.0  678282
-      4864000   1.7520E-01 0.0012 0.0000 10.0  678750   1.7520E-01 0.0012 0.0000 10.0  678750
-      5000000   1.7524E-01 0.0011 0.0000 10.0  679102   1.7524E-01 0.0011 0.0000 10.0  679102
+       256000   1.7744E-01 0.0050 0.0000 10.0  745588   1.7744E-01 0.0050 0.0000 10.0  745588
+       512000   1.7589E-01 0.0036 0.0000 10.0  742243   1.7589E-01 0.0036 0.0000 10.0  742243
+       768000   1.7546E-01 0.0029 0.0000 10.0  740432   1.7546E-01 0.0029 0.0000 10.0  740432
+      1024000   1.7512E-01 0.0025 0.0000 10.0  740734   1.7512E-01 0.0025 0.0000 10.0  740734
+      1280000   1.7519E-01 0.0023 0.0000 10.0  740609   1.7519E-01 0.0023 0.0000 10.0  740609
+      1536000   1.7509E-01 0.0021 0.0000 10.0  740951   1.7509E-01 0.0021 0.0000 10.0  740951
+      1792000   1.7509E-01 0.0019 0.0000 10.0  741271   1.7509E-01 0.0019 0.0000 10.0  741271
+      2048000   1.7488E-01 0.0018 0.0000 10.0  740966   1.7488E-01 0.0018 0.0000 10.0  740966
+      2304000   1.7509E-01 0.0017 0.0000 10.0  741228   1.7509E-01 0.0017 0.0000 10.0  741228
+      2560000   1.7502E-01 0.0016 0.0000 10.0  741194   1.7502E-01 0.0016 0.0000 10.0  741194
+      2816000   1.7484E-01 0.0015 0.0000 10.0  740582   1.7484E-01 0.0015 0.0000 10.0  740582
+      3072000   1.7486E-01 0.0015 0.0000 10.0  740850   1.7486E-01 0.0015 0.0000 10.0  740850
+      3328000   1.7493E-01 0.0014 0.0000 10.0  741422   1.7493E-01 0.0014 0.0000 10.0  741422
+      3584000   1.7491E-01 0.0014 0.0000 10.0  741329   1.7491E-01 0.0014 0.0000 10.0  741329
+      3840000   1.7499E-01 0.0013 0.0000 10.0  741735   1.7499E-01 0.0013 0.0000 10.0  741735
+      4096000   1.7499E-01 0.0013 0.0000 10.0  741566   1.7499E-01 0.0013 0.0000 10.0  741566
+      4352000   1.7512E-01 0.0012 0.0000 10.0  741694   1.7512E-01 0.0012 0.0000 10.0  741694
+      4608000   1.7514E-01 0.0012 0.0000 10.0  741543   1.7514E-01 0.0012 0.0000 10.0  741543
+      4864000   1.7520E-01 0.0012 0.0000 10.0  741729   1.7520E-01 0.0012 0.0000 10.0  741729
+      5000000   1.7524E-01 0.0011 0.0000 10.0  741780   1.7524E-01 0.0011 0.0000 10.0  741780
 
  ***********************************************************************************************************************
 
- dump no.    2 on file runtpe     nps =     5000000     coll =       16732416     ctm =        1.12   nrn =        
+ dump no.    2 on file runtpe     nps =     5000000     coll =       16732416     ctm =        1.02   nrn =        
  176798721
 
          2 warning messages so far.
@@ -8748,6 +8748,6 @@
 
  run terminated when     5000000  particle histories were done.
 
- computer time =    1.12 minutes
+ computer time =    1.03 minutes
 
- mcnp     version 6     05/08/13                     11/27/17 23:41:16                     probid =  11/27/17 23:40:08 
+ mcnp     version 6     05/08/13                     11/29/17 00:26:52                     probid =  11/29/17 00:25:51 
