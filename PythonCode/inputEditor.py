@@ -49,7 +49,8 @@ mcnpOut=parentDir+'\MCNP_Output\HPGe_Output_Model'
 varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
 
 # =============================================================================
-# These are the keywords in a set order for the purpose of manipulation later
+# These are the keywords in a set order (top to bottom in the files)
+# for the purpose of manipulation later
 # =============================================================================
 dimensionKeys = ['geDensity','geLength','topDeadLayer','sideDeadLayer']
 iterationKeys = ['topDeadLayerMin' 'topDeadLayerMax' 'geLengthMin' 'geLengthMax'
@@ -169,7 +170,7 @@ def relativeErr(experimentalData,outputData):
 def recreateDimFile(valuesToChange,newValue,fileIn):
 	with open(fileIn, "w")as text_file:
 		for i in range(len(valuesToChange)):
-			text_file.write(valuesToChange[i]+ " " + str(newValue[i]+'\n'))
+			text_file.write(valuesToChange[i]+ " " + str(newValue[i])+'\n')
 		text_file.close()
 
 # =============================================================================
@@ -178,14 +179,14 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
 # Get default values
 defaultValues = createDictionary(dimensionsFile)
 iterationValues = createDictionary(iterationFile)
-TDL=1
+TDL=15
 if TDL == 0:
     print("Must be at least 1")
     TDL=1
 topDeadLayer=np.linspace(float(iterationValues['topDeadLayerMin']),
                          float(iterationValues['topDeadLayerMax']),TDL)
 
-GL = 1
+GL = 15
 if GL == 0:
     print("Must be at least 1")
     GL=1
