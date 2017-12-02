@@ -10,7 +10,7 @@ c ****************************************************************************
 c **** Detector:
     1     3       -2.7  -14 -5 1 90                   imp:p=1  $ vacuum
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
-    3     4      -5.22  14 -4 -9 (16 :2 :-14 )        imp:p=1  $ Ge Crystal    ****Ge Density,5.2-5.5****
+    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=1  $ Ge Crystal    ****Ge Density,5.2-5.5****
     4    10  -0.001225  (-1 15 -3 )                   imp:p=1  $ Air Inside Case
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
     6     3       -2.7  (5 90 -8 -77):(15 -8 1 -90)   imp:p=1  $ Al Siding
