@@ -13,4 +13,5 @@ HPGe_cesium137.txtc
 HPGe_cesium137.txto
 fort.32
 
-HPGe_Generic_Model.i
+InputDeck/HPGe_Generic_Model.i
+Model/HPGe_Generic_Model.i

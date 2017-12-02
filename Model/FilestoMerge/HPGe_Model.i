@@ -25,7 +25,7 @@ c ____________________________________________
                        #(-93 94 -92 8) #(-16 91 -92 8) imp:p=1  $ Vacuum Layer
    12     3       -2.7  (-11 10 -12 15):(-13 12 -11)  imp:p=1  $ Al Housing
 c **** Source:
-   13     1      mylar 27 -29 -28                    imp:p=1  $ Mylar Shield on Source
+   13     12      -1.19 27 -29 -28                    imp:p=1  $ Mylar Shield on Source
 c **** Shielding:
    14    11     -11.34  (61 -51 44 -53 ):(-65 44 67 -61 ):   
                         (63 -53 -51 ):(67 -51 -65 44) imp:p=1  $ Lead Shield

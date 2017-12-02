@@ -52,7 +52,8 @@ varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
 # These are the keywords in a set order (top to bottom in the files)
 # for the purpose of manipulation later
 # =============================================================================
-dimensionKeys = ['geDensity','geLength','topDeadLayer','sideDeadLayer']
+dimensionKeys = ['geDensity','geLength','topDeadLayer','sideDeadLayer','innerSideDL'
+                 ,'innerTopDL','kaptonLay','innerAl','endcapAL']
 iterationKeys = ['topDeadLayerMin' 'topDeadLayerMax' 'geLengthMin' 'geLengthMax'
                  'sideDeadLayerMin' 'sideDeadLayerMax' 'geDensityMin' 
                  'geDensityMax']
@@ -156,7 +157,6 @@ def relativeErr(experimentalData,outputData):
     errorDict={}
     for key in experimentalData.keys():
         expData = float(experimentalData[key])
-        print(outputData[key][0])
         modelData = float(outputData[key][0])
         errOfBin=np.abs(expData-11*modelData)/expData
         errorDict[key]=errOfBin
@@ -180,6 +180,13 @@ def recreateDimFile(valuesToChange,newValue,fileIn):
 # Get default values
 defaultValues = createDictionary(dimensionsFile)
 iterationValues = createDictionary(iterationFile)
+
+# Set initial best values as the default values
+bestGeDensity= defaultValues['geDensity']
+bestGeLength= defaultValues['geLength']
+bestSideDeadLayer= defaultValues['sideDeadLayer']
+bestTopDeadLayer = defaultValues['topDeadLayer']
+
 TDL=1
 if TDL == 0:
     print("Must be at least 1")
@@ -220,10 +227,9 @@ for posSource in fileNames[1:]:
     energyBins = createDictionary(energyFile)
     
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
-    
-    resetDimValues = [defaultValues['geDensity'],defaultValues['geLength'],
-                      defaultValues['topDeadLayer'],defaultValues['sideDeadLayer']]
-    recreateDimFile(dimensionKeys,resetDimValues,dimensionsFile)
+       
+    # reset the average error for the new source
+    oldAvgErr = 999
     
     # This merges the source to variable model with the source model
     # Files that will be merged to create base model currently just the base 
@@ -246,7 +252,6 @@ for posSource in fileNames[1:]:
     # 5 Repeat
     # =============================================================================
     # La Repeat Loop
-    oldAvgErr = 999
     # *******Top Dead Layer
     for i in range(TDL):
         # 1 Altar Model 
@@ -266,7 +271,6 @@ for posSource in fileNames[1:]:
         # =============================================================================
 
         #Grab Data
-        print(energyBins)
         freshData = getData(mcnpOut, energyBins)
 
         relError = relativeErr(energyBins,freshData)
@@ -278,10 +282,11 @@ for posSource in fileNames[1:]:
         elif averageError<oldAvgErr:
             oldAvgErr=averageError
             bestTopDeadLayer = topDeadLayer[i]
-        #print("Average Error was: " +str(averageError)+"\n")
         # 4 Create new Input Values (Based off predetermeind Iteration)
         newDimensionValues = [geDensity[0],geLength[0],topDeadLayer[i],
-                              sideDeadLayer[0]]
+                              sideDeadLayer[0],defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
 
         # =============================================================================
         # Change the value to the next one (use a loop) then place that value into 
@@ -301,9 +306,10 @@ for posSource in fileNames[1:]:
     #Reset for next parameter
     #Alter Dim File to best found 
     newDimensionValues = [geDensity[0],geLength[0],bestTopDeadLayer,
-                      sideDeadLayer[0]]
+                      sideDeadLayer[0],defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-    oldAvgErr = 999
     
     # ******* Ge Crystal Length
     for i in range(GL):    
@@ -333,11 +339,12 @@ for posSource in fileNames[1:]:
         # Record Values
         dataOut = dataOutLoc[currPos]+'CrystalLength_'
         createFile(freshData,relError,averageError,dataOut+str(i)+'.txt')
-        #print("Average Error was: " +str(averageError)+"\n")
 
         # 4 Create new Input Values (Based off predetermeind Iteration)
         newDimensionValues = [geDensity[0],geLength[i],bestTopDeadLayer,
-                              sideDeadLayer[0]]
+                              sideDeadLayer[0],defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
         # 5 Repeat/Clean Up
@@ -347,9 +354,10 @@ for posSource in fileNames[1:]:
 
     #Alter Dim File to best found 
     newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-                      sideDeadLayer[0]]
+                      sideDeadLayer[0],defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-    oldAvgErr = 999     
     
     # ******* Crystal Radius (Increasing Dead Layer on sides constant total radius)
     for i in range(CR):    
@@ -380,11 +388,12 @@ for posSource in fileNames[1:]:
         # Record Values
         dataOut = dataOutLoc[currPos]+'SideDeadLayer_'
         createFile(freshData,relError,averageError,dataOut+str(i)+'.txt')
-        #print("Average Error was: " +str(averageError)+"\n")
 
         # 4 Create new Input Values (Based off predetermeind Iteration)
         newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-                              sideDeadLayer[i]]
+                              sideDeadLayer[i],defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
         # 5 Repeat/Clean Up
@@ -394,11 +403,12 @@ for posSource in fileNames[1:]:
 
     #Alter Dim File to best found 
     newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-                      bestSideDeadLayer]
+                      bestSideDeadLayer,defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
     # Change Density if we are close
-    oldAvgErr = 999   
     for i in range(n):    
         # 1 Altar Model 
         detectorDimensions = createDictionary(dimensionsFile)
@@ -423,13 +433,14 @@ for posSource in fileNames[1:]:
         elif averageError<oldAvgErr:
             oldAvgErr=averageError
             bestGeDensity = geDensity[i]
-        #print("Average Error was: " +str(averageError)+"\n")
         # Record Values
         dataOut = dataOutLoc[currPos]+'GeDensity_'
         createFile(freshData,relError,averageError,dataOut+str(i)+'.txt')
         # 4 Create new Input Values (Based off predetermeind Iteration)
         newDimensionValues = [geDensity[i],bestGeLength,bestTopDeadLayer,
-                              bestSideDeadLayer]
+                              bestSideDeadLayer,defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
         # 5 Repeat/Clean Up
@@ -439,7 +450,9 @@ for posSource in fileNames[1:]:
 
     #Alter Dim File to best found 
     newDimensionValues = [bestGeDensity,bestGeLength,bestTopDeadLayer,
-                      bestSideDeadLayer]
+                      bestSideDeadLayer,defaultValues['innerSideDL'],
+                              defaultValues['innerTopDL'],defaultValues['kaptonLay']
+                              ,defaultValues['innerAl'],defaultValues['endcapAL']]
     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
 
     # Using best values what is the best relative error?
@@ -459,7 +472,6 @@ for posSource in fileNames[1:]:
     #Calculate Error
     relError = relativeErr(energyBins,freshData)
     averageError = sum(relError.values())/len(relError)
-    #print("Average Error for Best Values: " +str(averageError)+"\n")
     # Record Values
     dataOut = dataOutLoc[currPos]+'.txt'
     createFile(freshData,relError,averageError,dataOut)
@@ -470,3 +482,12 @@ for posSource in fileNames[1:]:
     
     #Next File
     currPos +=1
+    
+    # When moving to next source reset the values for the dimension
+    resetDimValues = [defaultValues['geDensity'],defaultValues['geLength'],
+                      defaultValues['topDeadLayer'],defaultValues['sideDeadLayer'],
+                      defaultValues['innerSideDL'],defaultValues['innerTopDL'],
+                      defaultValues['kaptonLay'],defaultValues['innerAl'],
+                      defaultValues['endcapAL']]
+    
+    recreateDimFile(dimensionKeys,resetDimValues,dimensionsFile)
