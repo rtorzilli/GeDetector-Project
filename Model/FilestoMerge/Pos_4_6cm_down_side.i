@@ -25,7 +25,7 @@ c ____________________________________________
                        #(-93 94 -92 8) #(-16 91 -92 8) imp:p=1  $ Vacuum Layer
    12     3       -2.7  (-11 10 -12 15):(-13 12 -11)  imp:p=1  $ Al Housing
 c **** Source:
-   13     1      -1.38  (27 -29 -28)                    imp:p=1  $ Mylar Shield on Source
+   13     12      -1.19  (27 -29 -28)                    imp:p=1  $ Acrylic Shield on Source
 c **** Shielding:
    14    11     -11.34  (61 -51 44 -53 ):(-65 44 67 -61 ):   
                         (63 -53 -51 ):(67 -51 -65 44) imp:p=1  $ Lead Shield
@@ -101,8 +101,8 @@ c Lead Shield Lining:
    67        cz 5.01        $ Copper Lining
 c **** Source Encapsulation: POSITION 4: 6cm down side of Al Casing, adjusted cell
     27        px 4.75       $ Bottom of Mylar Under Source
-    28        px 4.77        $ Top of Mylar Under Source, 0.2mm thick
-    29        c/x 0 7.6 0.5         $ Mylar Cyinder, 1 mm wide
+    28        px 5.027        $ Top of Mylar Under Source, 0.2mm thick
+    29        c/x 0 7.6 1.27         $ Mylar Cyinder, 1 mm wide
 
 c ****************************************************************************
 c ************************* Data Cards ***************************************
@@ -149,6 +149,11 @@ m10   7000.84p      -0.755636
 c 
 c ** Lead: (11.34 g/cm^3)
 m11  82000.84p     1
+c
+c ** Acrylic Glass (1.19g/cm^3)
+m12   1000          -0.080538
+      6000          -0.599848
+      8000          -0.319614
 c 
 c
 c ** Polytetrafluoroethylene (Teflon): (2.25g/cm^3) ADD Telfon Insulator
@@ -167,10 +172,10 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=4.76 y=0 z=7.6
-SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333
+sdef erg=d3 par=2 x=4.8885 y=0 z=7.6
+SI3 L 0.060 0.088 0.122 0.159 0.392 0.514 0.662 0.898 1.173 1.333   $ Removed Cr-51 320 KeV peak
       1.836
-SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
+SP3 1 1 1 1 1 1 1 1 1 1 1      $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
 nps 5e6
 c 

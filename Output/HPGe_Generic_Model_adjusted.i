@@ -12,7 +12,7 @@ c **** Detector:
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
 c ____________________________________________
 c ----------ADJUST----------
-    3     4      geDensity  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
+    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
 c ____________________________________________
     4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case  10  -0.001225
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
@@ -44,40 +44,66 @@ c ****************************************************************************
 c 
 c **** Inner Hole Surfaces:
     1        cz 0.45        $ Inner hole Ge crystal radius(0.45 cm)
+c ____________________________________________
+c ----------ADJUST---------- Inner hole side dead layer
+c -- Range: 0.45001 to 0.4501
+c -- Cannot be less than surface 1
     2        cz 0.45003     $ Inner side dead-layer thickness(0.00003cm),[0.45+0.00003=0.45003]
+c ____________________________________________
+
     3        pz 11.58899333 $ Inner hole cutout into Ge crystal(6.95cm),[4.63899333+6.95]
+c ____________________________________________
+c ----------ADJUST---------- $ inner hole top dead-layer
+c -- Range: 11.588999 to 11.58912333
+c -- Must be less than surface 5
    16        pz 11.58902333 $ Inner top dead-layer thickness(0.00003cm),[11.58899333+0.00003]
+c ____________________________________________
 c **** Ge Crystal Dimensions:
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz sideDeadLayer        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 4.09142857143        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
 c ____________________________________________
 c ----------ADJUST----------
-c -- Range: 12.84199333 to 13.07599333
+c -- Range: 12.35 to 13.07599333
 c -- Must be less than surface 13
-    9        pz topDeadLayer $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 11.5795956227 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz geLength  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 3.79399133  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
     7        pz 13.08984    $ Metalized Mylar Layer(0.00084667cm),[13.1-0.01016]
+c ____________________________________________
+c ----------ADJUST---------- Kapton Window Thickness
+c -- Range: 13.095 to 13.2
+c -- Cannot be lower than surface 7, or higher than surface12
    77        pz 13.1        $ Kapton Layer(0.01016cm),[13.6-0.5]
+c ____________________________________________
 c Al Casing:
    90        pz 0.32        $ vacuum
     8        cz 4.226       $ Crystal Al siding radius(4.226), Al thickness(0.076cm),[4.15+0.076]
+c ____________________________________________
+c ----------ADJUST---------- Outerside Al Casing Thickness
+c -- Range: 4.5 to 4.7
+c -- Cannot be higher than surface 11, or lower than surface 92
    10        cz 4.6         $ Crystal Al siding inner radius(4.6cm),[4.75-.15]
+c ____________________________________________
    11        cz 4.75        $ Outer Al casing radius(4.75cm), Al thickness(0.15cm)
+c ____________________________________________
+c ----------ADJUST---------- Top Al Casing Thickness
+c -- Range: 13.35 to 13.55
+c -- Cannot be higher than surface 13
    12        pz 13.45       $ Al Endcap roof(z=13.45cm),[13.6-.15]
+c ____________________________________________
    13        pz 13.6        $ Al Endcap (13.6cm) above shielding floor, Al thickness(0.15cm)
    15        pz 0           $ Bottom of chamber set at z-axis origin
 c Brass Clasps:
@@ -100,10 +126,10 @@ c Lead Shield Lining:
    65        pz -0.26       $ Lower Copper Lining, 1.6mm thick(z=-0.26cm)
    66        cz 4.85        $ Tin Lining
    67        cz 5.01        $ Copper Lining
-c **** Source Encapsulation: POSITION 5: 16 cm above AL Casing and offest
-   27        pz 29.59       $ Bottom of Mylar Under Source
-   28        pz 29.61       $ Top of Mylar Under Source, 0.2mm thick
-   29        c/z 10.95 0 0.5         $ Mylar Cyinder, 1 mm wide
+c **** Source Encapsulation: POSITION 1: 0cm above AL Casing and centered
+   27        pz 13.6       $ Bottom of Mylar Under Source
+   28        pz 13.62       $ Top of Mylar Under Source, 0.2mm thick
+   29        cz 0.5         $ Mylar Cyinder, 1 mm wide
 
 c ****************************************************************************
 c ************************* Data Cards ***************************************
@@ -168,12 +194,12 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=10.95 y=0 z=29.6
+sdef erg=d3 par=2 x=0 y=0 z=13.61
 SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 5e6
+nps 1e6
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
