@@ -13,13 +13,4 @@ HPGe_cesium137.txtc
 HPGe_cesium137.txto
 fort.32
 
-GeDetector_Project\Model\HPGe_Generic_Model.i
-
-HPGe_Output_Model_C*
-HPGe_Output_Model_T*
-HPGe_Output_Model_S*
-HPGe_Output_Model_G*
-Data_Pos1_C*
-Data_Pos1_T*
-Data_Pos1_S*
-Data_Pos1_G*
+HPGe_Generic_Model.i
