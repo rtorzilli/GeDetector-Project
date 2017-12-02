@@ -1,8 +1,10 @@
 rem Put the path to your MCNP_CODE\bin folder here
+rem @PATH D:\my_mcnp\MCNP_CODE\bin;%PATH%
 rem @PATH C:\Users\rober\Documents\Software_Tools\MCNP6.1\MCNP_CODE\bin;%PATH%
 @PATH C:\Users\Robert\Documents\1_Software_Tools\MCNP_6.1_Windows\MCNP_CODE\bin;%PATH%
 
 rem Put the path to your MCNP_DATA here
+rem @set DATAPATH=D:\my_mcnp\MCNP_DATA
 rem @set DATAPATH=C:\Users\rober\Documents\Software_Tools\MCNP6.1\MCNP_DATA
 @set DATAPATH=C:\Users\Robert\Documents\1_Software_Tools\MCNP_6.1_Windows\MCNP_DATA
 
