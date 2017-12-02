@@ -12,3 +12,5 @@ del %Path_Var%Position3\Data_and_RelativeErr\Data*
 
 del %Path_Var%Position5\HP*
 del %Path_Var%Position5\Data_and_RelativeErr\Data*
+
+del %Path_Var%HP*
