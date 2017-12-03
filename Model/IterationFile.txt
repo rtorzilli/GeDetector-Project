@@ -1,4 +1,4 @@
-topDeadLayerMin 11.5
+topDeadLayerMin 12.35
 topDeadLayerMax 13.07599333
 geLengthMin 3.79399133
 geLengthMax 5.483999333
@@ -6,3 +6,13 @@ sideDeadLayerMin 3.92
 sideDeadLayerMax 4.12
 geDensityMin -5.32
 geDensityMax -5.35
+innerSideDLMin 0.45001
+innerSideDLMax 0.4501
+innerTopDLMin 11.588999
+innerTopDLMax 11.58912333
+kaptonLayMin 13.095
+kaptonLayMax 13.2
+innerAlMin 4.5
+innerAlMax 4.7
+endcapALMin 13.35
+endcapALMax 13.55
