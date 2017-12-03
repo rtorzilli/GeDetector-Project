@@ -48,14 +48,14 @@ c ____________________________________________
 c ----------ADJUST---------- Inner hole side dead layer
 c -- Range: 0.45001 to 0.4501
 c -- Cannot be less than surface 1								  
-    2        cz 0.45003     $ Inner side dead-layer thickness(0.00003cm),[0.45+0.00003=0.45003]
+    2        cz 0.4500775     $ Inner side dead-layer thickness(0.00003cm),[0.45+0.00003=0.45003]
 c ____________________________________________
     3        pz 11.58899333 $ Inner hole cutout into Ge crystal(6.95cm),[4.63899333+6.95]
 c ____________________________________________
 c ----------ADJUST---------- $ inner hole top dead-layer
 c -- Range: 11.588999 to 11.58912333
 c -- Must be less than surface 5								
-   16        pz 11.58902333 $ Inner top dead-layer thickness(0.00003cm),[11.58899333+0.00003]
+   16        pz 11.588999 $ Inner top dead-layer thickness(0.00003cm),[11.58899333+0.00003]
 c ____________________________________________											  
 c **** Ge Crystal Dimensions:
 c ____________________________________________
@@ -76,7 +76,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz 4.63899333  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 5.483999333  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
@@ -85,7 +85,7 @@ c ____________________________________________
 c ----------ADJUST---------- Kapton Window Thickness
 c -- Range: 13.095 to 13.2
 c -- Cannot be lower than surface 7, or higher than surface12															 
-   77        pz 13.1        $ Kapton Layer(0.01016cm),[13.6-0.5]
+   77        pz 13.2        $ Kapton Layer(0.01016cm),[13.6-0.5]
 c ____________________________________________											  
 c Al Casing:
    90        pz 0.32        $ vacuum
@@ -94,7 +94,7 @@ c ____________________________________________
 c ----------ADJUST---------- Outerside Al Casing Thickness
 c -- Range: 4.5 to 4.7
 c -- Cannot be higher than surface 11, or lower than surface 92															   
-   10        cz 4.6         $ Crystal Al siding inner radius(4.6cm),[4.75-.15]
+   10        cz 4.7         $ Crystal Al siding inner radius(4.6cm),[4.75-.15]
 c ____________________________________________											  
    11        cz 4.75        $ Outer Al casing radius(4.75cm), Al thickness(0.15cm)
 c ____________________________________________
@@ -203,7 +203,7 @@ SI3 L 0.060 0.088 0.122 0.159 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1      $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 1e3
+nps 5e6
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
