@@ -62,7 +62,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz 4.02        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 3.92        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
@@ -70,13 +70,13 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.35 to 13.07599333
 c -- Must be less than surface 13
-    9        pz 12.712996665 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 12.35 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.79399133 to 5.483999333
 c -- Must be greater than surface 90
-   14        pz 4.63899333  $ Bottom of Ge crystal(4.63899333cm offset)
+   14        pz 3.79399133  $ Bottom of Ge crystal(4.63899333cm offset)
 c ____________________________________________
 c **** Outside Ge Crystal:
 c IR Window:
@@ -101,7 +101,7 @@ c ____________________________________________
 c ----------ADJUST---------- Top Al Casing Thickness
 c -- Range: 13.35 to 13.55
 c -- Cannot be higher than surface 13									 
-   12        pz 13.45       $ Al Endcap roof(z=13.45cm),[13.6-.15]
+   12        pz 13.35       $ Al Endcap roof(z=13.45cm),[13.6-.15]
 c ____________________________________________											  
    13        pz 13.6        $ Al Endcap (13.6cm) above shielding floor, Al thickness(0.15cm)
    15        pz 0           $ Bottom of chamber set at z-axis origin

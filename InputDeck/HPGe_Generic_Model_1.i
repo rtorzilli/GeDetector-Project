@@ -62,7 +62,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 3.92 to 4.12
 c -- Must be less than surface 5
-    4        cz 4.02        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
+    4        cz 3.92        $ Outer side dead-layer thickness(0.13cm),[4.15-0.13=4.02]
 c ____________________________________________
     5        cz 4.15        $ Ge crystal radius (4.15cm)
     6        pz 13.08899333 $ Ge crystal length(8.45cm),[8.45+4.63899333]
@@ -70,7 +70,7 @@ c ____________________________________________
 c ----------ADJUST----------
 c -- Range: 12.35 to 13.07599333
 c -- Must be less than surface 13
-    9        pz 12.712996665 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
+    9        pz 12.35 $ Outer top dead-layer thickness(0.13cm),[13.08899333-0.13]
 c ____________________________________________
 c ____________________________________________
 c ----------ADJUST----------
@@ -101,7 +101,7 @@ c ____________________________________________
 c ----------ADJUST---------- Top Al Casing Thickness
 c -- Range: 13.35 to 13.55
 c -- Cannot be higher than surface 13									 
-   12        pz 13.45       $ Al Endcap roof(z=13.45cm),[13.6-.15]
+   12        pz 13.35       $ Al Endcap roof(z=13.45cm),[13.6-.15]
 c ____________________________________________											  
    13        pz 13.6        $ Al Endcap (13.6cm) above shielding floor, Al thickness(0.15cm)
    15        pz 0           $ Bottom of chamber set at z-axis origin
@@ -203,7 +203,7 @@ SI3 L 0.060 0.088 0.122 0.159 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1      $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 5e6
+nps 1e3
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          

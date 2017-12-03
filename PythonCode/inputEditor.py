@@ -56,11 +56,6 @@ varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
 # in order of importance
 dimensionKeys = ['topDeadLayer','geLength','sideDeadLayer','kaptonLay','innerSideDL'
                  ,'innerTopDL','geDensity','endcapAL','innerAl']
-# =============================================================================
-# iterationKeys = ['topDeadLayerMin' 'topDeadLayerMax' 'geLengthMin' 'geLengthMax'
-#                  'sideDeadLayerMin' 'sideDeadLayerMax' 'geDensityMin' 
-#                  'geDensityMax']
-# =============================================================================
 
 # ORDER IS VERY IMPORTANT FOR THESE FOUR LISTS
 # Make sure there are no empty lines at the end of these files or an index error will occur
@@ -216,62 +211,21 @@ def editDictionary (inputDict, key_replace, replaceValue):
 defaultValues = createDictionary(dimensionsFile)
 iterationValues = createDictionary(iterationFile)
 
-# Set initial best values as the default values
-# =============================================================================
-# bestGeDensity= defaultValues['geDensity']
-# bestGeLength= defaultValues['geLength']
-# bestSideDeadLayer= defaultValues['sideDeadLayer']
-# bestTopDeadLayer = defaultValues['topDeadLayer']
-# bestinSideDL = defaultValues['innerSideDL']
-# bestinTopDL = defaultValues['innerTopDL']
-# bestKap = defaultValues['kaptonLay']
-# bestinAl = defaultValues['innerAl']
-# bestendAL = defaultValues['endcapAL']
-# 
-# =============================================================================
 iterations = getThirdCol(dimensionsFile)
 iterationRange={}
 bestValues ={}
+
 for key in iterations.keys():
     if iterations[key]==0:
         editDictionary(iterations,key,str(1))
         print("Must be at least 1")
+    # Determine the 
     iterationRange[key]=np.linspace(float(iterationValues[key+'Min'])
                         ,float(iterationValues[key+'Max']),int(iterations[key]))
     # Set initial best values as the default values
     bestValues[key]=float(defaultValues[key])
         
-# =============================================================================
-# TDL=1
-# if TDL == 0:
-#     print("Must be at least 1")
-#     TDL=1
-# topDeadLayer=np.linspace(float(iterationValues['topDeadLayerMin']),
-#                          float(iterationValues['topDeadLayerMax']),TDL)
-# 
-# GL = 0
-# if GL == 0:
-#     print("Must be at least 1")
-#     GL=1
-# geLength= np.linspace(float(iterationValues['geLengthMin']),
-#                       float(iterationValues['geLengthMax']),GL)
-# 
-# CR= 1
-# if CR == 0:
-#     print("Must be at least 1")
-#     CR=1
-# sideDeadLayer = np.linspace(float(iterationValues['sideDeadLayerMin']),
-#                             float(iterationValues['sideDeadLayerMax']),CR)
-# 
-# n= 1
-# if n == 0:
-#     print("Must be at least 1")
-#     n=1
-# geDensity = np.linspace(float(iterationValues['geDensityMin']),
-#                         float(iterationValues['geDensityMax']),n)
-# =============================================================================
-
-# Used to change folders
+# Used to change folders and for naming
 currPos = 0
 # Start Loop    
 for posSource in fileNames[1:]:
@@ -307,13 +261,51 @@ for posSource in fileNames[1:]:
     #     Place them in Input File
     # 5 Repeat
     # =============================================================================
-    # La Repeat Loop
-    # *******Top Dead Layer
+   
+    # Run through first time with default values
+    # 1 Altar Model 
+    editFile(detectorDimensions,mcnpModelBase,outputFile)
+
+    # 2 Run "MCNP" currently a test bat file
+    # Batch file that will be called
+    runBat = subP.Popen(mcnpBat, cwd=parentDir, shell=True)
+    runBat.communicate()
+    runBat.wait()
+                #Grab Data
+    freshData = getData(mcnpOut, energyBins)
+
+    relError = relativeErr(energyBins,freshData)
+                # Break out?
+    # assumming that anything less then our uncertainty is a good value
+    averageError = sum(relError.values())/len(relError)
+    myChi =chiSquared(freshData,energyBins)
+    if myChi<.01:
+        break
+    
+    # Record
+    dataOut = dataOutLoc[currPos]+'_Default'
+    createFile(freshData,relError,myChi,dataOut+'.txt')
+            
+    # Check first if file exists if it does rename it
+    if (os.path.isfile(mcnpOut)):
+        os.rename(mcnpOut,mcnpOutRename+'Default'+'.txt')
+    
+    # Loop over the total dimension key list length
     for count in range(len(dimensionKeys)):
+        # Keep track of what parameter we are currently iterating over
         currParam = dimensionKeys[count]
-        #newDimensionValues=list(bestValues)
         
+        # Loop over the number of iterations for the given paramater (changed
+        # in the variable input file)
         for i in range(int(iterations[currParam])):
+            # 4 Create new Input Values (Based off predetermeind Iteration)
+            # ===========================================================
+            # Change current working paramater to its next value in the 
+            # iteration list, we put thi shere since the default values have 
+            # already been ran
+            # ===========================================================
+            editDictionary(detectorDimensions,currParam,str(iterationRange[currParam][i]))
+            
             # 1 Altar Model 
             editFile(detectorDimensions,mcnpModelBase,outputFile)
     
@@ -324,10 +316,10 @@ for posSource in fileNames[1:]:
             runBat.wait()
     
             # 3 Compare Values
-            # =============================================================================
-            #     Note that we rename the output files so the last file ran is the one without
-            #     a number assigned to it
-            # =============================================================================
+            # ============================================================
+            # Note that we rename the output files so the last file ran is 
+            # the one without a number assigned to it
+            # ============================================================
     
             #Grab Data
             freshData = getData(mcnpOut, energyBins)
@@ -343,29 +335,7 @@ for posSource in fileNames[1:]:
             elif myChi<oldAvgErr:
                 oldAvgErr=myChi
                 bestValues[currParam] = iterationRange[currParam][i]
-            # 4 Create new Input Values (Based off predetermeind Iteration)
-            #newDimensionValues[count] = iterationRange[currParam][i]
-# =============================================================================
-#             newDimensionValues = [defaultValues['geDensity'],
-#                                   defaultValues['geLength'],
-#                                   iterationRange[currParam][i],
-#                                   defaultValues['sideDeadLayer'],
-#                                   defaultValues['innerSideDL'],
-#                                   defaultValues['innerTopDL'],
-#                                   defaultValues['kaptonLay'],
-#                                   defaultValues['innerAl'],
-#                                   defaultValues['endcapAL']]
-# =============================================================================
-    
-            # =============================================================================
-            # Change the value to the next one (use a loop) then place that value into 
-            # the dimensions File used to edit the model
-            # =============================================================================
-            editDictionary(detectorDimensions,currParam,str(iterationRange[currParam][i]))
-# =============================================================================
-#             recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# =============================================================================
-    
+                   
             # 5 Repeat/Clean Up/Record
             # Record Values
             dataOut = dataOutLoc[currPos]+currParam
@@ -377,178 +347,16 @@ for posSource in fileNames[1:]:
         
         #Reset for next parameter
         #Alter Dim File to best found 
-# =============================================================================
-#         newDimensionValues = [defaultValues['geDensity'],
-#                               defaultValues['geLength'],
-#                               bestValues[currParam],
-#                               defaultValues['sideDeadLayer'],
-#                               defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],
-#                               defaultValues['kaptonLay'],
-#                               defaultValues['innerAl'],
-#                               defaultValues['endcapAL']]
-# =============================================================================
         editDictionary(detectorDimensions,currParam,str(bestValues[currParam]))
-        #recreateDimFile(dimensionKeys,bestValues,dimensionsFile)
 
-    # ******* Ge Crystal Length
 # =============================================================================
-#     for i in range(GL):    
-#         # 1 Altar Model 
-#         detectorDimensions = createDictionary(dimensionsFile)
-#         editFile(detectorDimensions,mcnpModelBase,outputFile)
-# 
-#         # 2 Run "MCNP" currently a test bat file
-#         # Batch file that will be called
-#         runBat = subP.Popen(mcnpBat, cwd=parentDir, shell=True)
-#         runBat.communicate()
-#         runBat.wait()
-# 
-#         # 3 Compare Values
-#             #Grab Data
-#         freshData = getData(mcnpOut, energyBins)
-# 
-#         relError = relativeErr(energyBins,freshData)
-# 
-#         # Break out?
-#         averageError = sum(relError.values())/len(relError)
-#         myChi =chiSquared(freshData,energyBins)
-#         if myChi<.01:
-#             break
-#         elif myChi<oldAvgErr:
-#             oldAvgErr=myChi
-#             bestGeLength = geLength[i]
-#         # Record Values
-#         dataOut = dataOutLoc[currPos]+'CrystalLength_'
-#         createFile(freshData,relError,myChi,dataOut+str(i)+'.txt')
-# 
-#         # 4 Create new Input Values (Based off predetermeind Iteration)
-#         newDimensionValues = [geDensity[0],geLength[i],bestTopDeadLayer,
-#                               sideDeadLayer[0],defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-#         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# 
-#         # 5 Repeat/Clean Up
-#             # Check first if file exists if it does rename it
-#         if (os.path.isfile(mcnpOut)):
-#             os.rename(mcnpOut,mcnpOutRename+"CrystalLength_"+str(i)+'.txt')
-# 
-#     #Alter Dim File to best found 
-#     newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-#                       sideDeadLayer[0],defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-#     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-#     
-#     # ******* Crystal Radius (Increasing Dead Layer on sides constant total radius)
-#     for i in range(CR):    
-#         # 1 Altar Model 
-#         detectorDimensions = createDictionary(dimensionsFile)
-#         editFile(detectorDimensions,mcnpModelBase,outputFile)
-# 
-#         # 2 Run "MCNP" currently a test bat file
-#         # Batch file that will be called
-#         runBat = subP.Popen(mcnpBat, cwd=parentDir, shell=True)
-#         runBat.communicate()
-#         runBat.wait()
-# 
-#         # 3 Compare Values
-#             #Grab Data
-#         freshData = getData(mcnpOut, energyBins)
-# 
-#         relError = relativeErr(energyBins,freshData)
-# 
-#         # Break out?
-#         averageError = sum(relError.values())/len(relError)
-#         myChi =chiSquared(freshData,energyBins)
-#         if myChi<.01:
-#             break
-#         elif myChi<oldAvgErr:
-#             oldAvgErr=myChi
-#             bestSideDeadLayer = sideDeadLayer[i]
-#             
-#         # Record Values
-#         dataOut = dataOutLoc[currPos]+'SideDeadLayer_'
-#         createFile(freshData,relError,myChi,dataOut+str(i)+'.txt')
-# 
-#         # 4 Create new Input Values (Based off predetermeind Iteration)
-#         newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-#                               sideDeadLayer[i],defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-#         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# 
-#         # 5 Repeat/Clean Up
-#             # Check first if file exists if it does rename it
-#         if (os.path.isfile(mcnpOut)):
-#             os.rename(mcnpOut,mcnpOutRename+"SideDeadLayer_"+str(i)+'.txt')
-# 
-#     #Alter Dim File to best found 
-#     newDimensionValues = [geDensity[0],bestGeLength,bestTopDeadLayer,
-#                       bestSideDeadLayer,defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-#     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# 
-#     # Change Density if we are close
-#     for i in range(n):    
-#         # 1 Altar Model 
-#         detectorDimensions = createDictionary(dimensionsFile)
-#         editFile(detectorDimensions,mcnpModelBase,outputFile)
-# 
-#         # 2 Run "MCNP" currently a test bat file
-#         # Batch file that will be called
-#         runBat = subP.Popen(mcnpBat, cwd=parentDir, shell=True)
-#         runBat.communicate()
-#         runBat.wait()
-# 
-#         # 3 Compare Values
-#             #Grab Data
-#         freshData = getData(mcnpOut, energyBins)
-# 
-#         relError = relativeErr(energyBins,freshData)
-# 
-#         # Break out?
-#         averageError = sum(relError.values())/len(relError)
-#         myChi =chiSquared(freshData,energyBins)
-#         if myChi<.01:
-#             break
-#         elif myChi<oldAvgErr:
-#             oldAvgErr=myChi
-#             bestGeDensity = geDensity[i]
-#         # Record Values
-#         dataOut = dataOutLoc[currPos]+'GeDensity_'
-#         createFile(freshData,relError,myChi,dataOut+str(i)+'.txt')
-#         # 4 Create new Input Values (Based off predetermeind Iteration)
-#         newDimensionValues = [geDensity[i],bestGeLength,bestTopDeadLayer,
-#                               bestSideDeadLayer,defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-#         recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# 
-#         # 5 Repeat/Clean Up
-#             # Check first if file exists if it does rename it
-#         if (os.path.isfile(mcnpOut)):
-#             os.rename(mcnpOut,mcnpOutRename+"GeDensity_"+str(i)+'.txt')
+#  Final run for current position using what should be the best found values
+#      defined as values that reduced the current(previous) chi squared value
 # =============================================================================
-
-    #Alter Dim File to best found 
-# =============================================================================
-#     newDimensionValues = [bestGeDensity,bestGeLength,bestTopDeadLayer,
-#                       bestSideDeadLayer,defaultValues['innerSideDL'],
-#                               defaultValues['innerTopDL'],defaultValues['kaptonLay']
-#                               ,defaultValues['innerAl'],defaultValues['endcapAL']]
-# =============================================================================
-# =============================================================================
-#     recreateDimFile(dimensionKeys,newDimensionValues,dimensionsFile)
-# =============================================================================
-
+    
     # Using best values what is the best relative error?
     # 1 Altar Model 
-# =============================================================================
-#     detectorDimensions = createDictionary(dimensionsFile)
-# =============================================================================
+
     editFile(detectorDimensions,mcnpModelBase,outputFile)
     editFile(detectorDimensions,mcnpModelBase,outputFileFinal+"_"+str(currPos)+".i")
 
@@ -575,15 +383,3 @@ for posSource in fileNames[1:]:
     
     #Next File
     currPos +=1
-    
-    # When moving to next source reset the values for the dimension
-# =============================================================================
-#     resetDimValues = [defaultValues['geDensity'],defaultValues['geLength'],
-#                       defaultValues['topDeadLayer'],defaultValues['sideDeadLayer'],
-#                       defaultValues['innerSideDL'],defaultValues['innerTopDL'],
-#                       defaultValues['kaptonLay'],defaultValues['innerAl'],
-#                       defaultValues['endcapAL']]
-#     
-#     recreateDimFile(dimensionKeys,resetDimValues,dimensionsFile)
-# 
-# =============================================================================
