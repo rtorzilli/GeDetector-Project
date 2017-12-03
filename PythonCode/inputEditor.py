@@ -178,21 +178,21 @@ def getData(dataFile,wantedValues):
 # Compare data using relative error (the times 12 is due to the format for the mcnp
 # out values). 
 # =============================================================================
-def relativeErr(experimentalData,outputData):
+def relativeErr(experimentalData,outputData,amtOfVals):
     errorDict={}
     for key in experimentalData.keys():
         expData = float(experimentalData[key])
         modelData = float(outputData[key][0])
-        errOfBin=np.abs(expData-11*modelData)/expData
+        errOfBin=np.abs(expData-amtOfVals*modelData)/expData
         errorDict[key]=errOfBin
     return errorDict
 
-def chiSquared(calcData, experiData):
+def chiSquared(calcData, experiData, amtOfVals):
     chi = 0
     for key in calcData.keys():
         if float(experiData[key]) == 0:
             return  print ("Divided by zero! Check experimental data")
-        top = (11*float(calcData[key][0])-float(experiData[key]))**2
+        top = (amtOfVals*float(calcData[key][0])-float(experiData[key]))**2
         bot = float(experiData[key])
         chi += top/bot
     return chi
@@ -246,6 +246,8 @@ for posSource in fileNames[1:]:
     energyFile = os.path.join(currentDir, "..\Model\ExperimentalData"
                               + compareValues[currPos])
     energyBins = createDictionary(energyFile)
+    # How many energies do we have?
+    n = len(energyBins)
     energyUncert = getThirdCol(energyFile)
     
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
@@ -286,11 +288,11 @@ for posSource in fileNames[1:]:
                 #Grab Data
     freshData = getData(mcnpOut, energyBins)
 
-    relError = relativeErr(energyBins,freshData)
+    relError = relativeErr(energyBins,freshData,n)
                 # Break out?
     # assumming that anything less then our uncertainty is a good value
     averageError = sum(relError.values())/len(relError)
-    myChi =chiSquared(freshData,energyBins)
+    myChi =chiSquared(freshData,energyBins,n)
     if myChi<.01:
         break
     
@@ -336,12 +338,12 @@ for posSource in fileNames[1:]:
             #Grab Data
             freshData = getData(mcnpOut, energyBins)
     
-            relError = relativeErr(energyBins,freshData)
+            relError = relativeErr(energyBins,freshData,n)
     
             # Break out?
             # assumming that anything less then our uncertainty is a good value
             averageError = sum(relError.values())/len(relError)
-            myChi =chiSquared(freshData,energyBins)
+            myChi =chiSquared(freshData,energyBins,n)
             if myChi<.01:
                 break
             elif myChi<oldAvgErr:
@@ -382,15 +384,15 @@ for posSource in fileNames[1:]:
     #Grab Data
     freshData = getData(mcnpOut, energyBins)
     #Calculate Error
-    relError = relativeErr(energyBins,freshData)
+    relError = relativeErr(energyBins,freshData,n)
     averageError = sum(relError.values())/len(relError)
-    myChi =chiSquared(freshData,energyBins)
+    myChi =chiSquared(freshData,energyBins,n)
     
 	# Plot the values
     # Edit values
     plotDataLocation = parentDir+'\MCNP_Output\Plots'+currentPositionFolder[currPos]+'.txt'
     plotData = createPlotFile(freshData,plotDataLocation)
-    plotter.plotIt(energyFile,plotDataLocation,posSource,parentDir+'\MCNP_Output\Plots')
+    plotter.plotIt(energyFile,plotDataLocation,n,posSource,parentDir+'\MCNP_Output\Plots')
 	
 	# Record Values
     dataOut = dataOutLoc[currPos]+'.txt'

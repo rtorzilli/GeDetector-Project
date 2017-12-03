@@ -5,8 +5,8 @@ Template For Plotting with Errorbars
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plotIt(ExperData,MCNPdata,Title,outLocation):
-    # Pulls Data:
+def plotIt(ExperData,MCNPdata,amtOfVals,Title,outLocation):
+	# Pulls Data:
     energyExperimental = np.loadtxt(ExperData)
     
     mcnpData = np.loadtxt(MCNPdata)
@@ -39,8 +39,8 @@ def plotIt(ExperData,MCNPdata,Title,outLocation):
                  ecolor='r')
     #
     plt.errorbar(xAxis, # X-Axis
-                 11*effMCNP, # Y-Axis
-                 yerr=11*effMCNP*uncertMCNP,  # Error Bars
+                 amtOfVals*effMCNP, # Y-Axis
+                 yerr=amtOfVals*effMCNP*uncertMCNP,  # Error Bars
                  label='MCNP',
                  color='g',
                  # Markers:
