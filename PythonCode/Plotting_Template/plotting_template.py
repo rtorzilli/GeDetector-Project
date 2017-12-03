@@ -22,8 +22,8 @@ def plotIt(ExperData,MCNPdata,Title,outLocation):
     effMCNP = mcnpData[:,1]
     uncertMCNP= mcnpData[:,2]
         # Plotting:
-    figureFile = plt.figure(1)
-    plt.rcParams.update({'font.size': 30})
+    figureFile = plt.figure()
+    plt.rcParams.update({'font.size': 10})
     plt.errorbar(xAxis, # X-Axis
                  effExper, # Y-Axis
                  yerr=effExper*uncertEper,  # Error Bars
@@ -55,9 +55,6 @@ def plotIt(ExperData,MCNPdata,Title,outLocation):
     plt.legend(loc='upper right',prop={'size': 8})
     plt.xlabel('Energy [MeV]')
     plt.ylabel('Absolute Efficiency')
-    plt.title("Source Position 1")  # We might chnage
+    plt.title(Title)  # We might chnage
     plt.xlim(0,1.5)
-    #plt.yscale('log')
-    # plt.grid()
-    plt.show()
     figureFile.savefig(outLocation+Title+'.png')
