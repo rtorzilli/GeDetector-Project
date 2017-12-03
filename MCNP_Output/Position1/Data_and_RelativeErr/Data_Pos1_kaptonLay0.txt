@@ -26,3 +26,5 @@ Energy Bin   Relative Error
 
 Chi Squared Value
 1.0622888627579996
+Average Error
+0.732384292226

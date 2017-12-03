@@ -17,13 +17,14 @@ This program will output the following:
 This script defines path variables in multiple areas (IE not all up front) in order to minimize SLOC
     and ensure loops work correctly
 
-This script has many fail points currently, use with caution
+This script has many fail points currently (no safety if statements), use with caution
     For Stability the keywords of the Variable File have been hard coded
     since dictionaries are not ordered
 """
 import os
 import subprocess as subP
 import numpy as np
+import Plotting_Template.plotting_template as plotter
 
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\HPGe_Generic_Model.i"
@@ -110,7 +111,7 @@ def mergeFile(baseFile, mergeFile,output):
                     outfile.write(line)           
 
 #Create a file with data, rel err, and the average error
-def createFile(dataDict,relErrDict,avgErr,ouput):
+def createFile(dataDict,relErrDict,chiVal,avgErr,ouput):
     with open(ouput,'w') as outfile:
         outfile.write('Energy Bin  Efficiency  Uncertainity\n')
         for key,value in dataDict.items():
@@ -120,7 +121,17 @@ def createFile(dataDict,relErrDict,avgErr,ouput):
         for key,value in relErrDict.items():
             outfile.write("{0} {1}\n".format(str(key), str(value))) 
         outfile.write("\nChi Squared Value\n")
+        outfile.write(str(chiVal))
+        outfile.write("\nAverage Error\n")
         outfile.write(str(avgErr))
+    outfile.close()
+    
+# Plot format data
+def createPlotFile(dataDict,ouput):
+    with open(ouput,'w') as outfile:
+        for key,value in dataDict.items():
+            outfile.write("{0} {1} {2}\n".format(str(key), str(value[0]),
+                          str(value[1]))) 
     outfile.close()
 
 # Creates a dictionary from a text file with two columns 
@@ -235,6 +246,7 @@ for posSource in fileNames[1:]:
     energyFile = os.path.join(currentDir, "..\Model\ExperimentalData"
                               + compareValues[currPos])
     energyBins = createDictionary(energyFile)
+    energyUncert = getThirdCol(energyFile)
     
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
        
@@ -284,7 +296,7 @@ for posSource in fileNames[1:]:
     
     # Record
     dataOut = dataOutLoc[currPos]+'_Default'
-    createFile(freshData,relError,myChi,dataOut+'.txt')
+    createFile(freshData,relError,myChi,averageError,dataOut+'.txt')
             
     # Check first if file exists if it does rename it
     if (os.path.isfile(mcnpOut)):
@@ -339,7 +351,7 @@ for posSource in fileNames[1:]:
             # 5 Repeat/Clean Up/Record
             # Record Values
             dataOut = dataOutLoc[currPos]+currParam
-            createFile(freshData,relError,myChi,dataOut+str(i)+'.txt')
+            createFile(freshData,relError,myChi,averageError,dataOut+str(i)+'.txt')
     
             # Check first if file exists if it does rename it
             if (os.path.isfile(mcnpOut)):
@@ -373,9 +385,16 @@ for posSource in fileNames[1:]:
     relError = relativeErr(energyBins,freshData)
     averageError = sum(relError.values())/len(relError)
     myChi =chiSquared(freshData,energyBins)
-    # Record Values
+    
+	# Plot the values
+    # Edit values
+    plotDataLocation = parentDir+'\MCNP_Output\Plots'+currentPositionFolder[currPos]+'.txt'
+    plotData = createPlotFile(freshData,plotDataLocation)
+    plotter.plotIt(energyFile,plotDataLocation,posSource,parentDir+'\MCNP_Output\Plots')
+	
+	# Record Values
     dataOut = dataOutLoc[currPos]+'.txt'
-    createFile(freshData,relError,myChi,dataOut)
+    createFile(freshData,relError,myChi,averageError,dataOut)
     # 4 Skip since this is the last run
     # 5 Clean Up one last time save input deck as best deck
     if (os.path.isfile(mcnpOut)):
@@ -383,3 +402,5 @@ for posSource in fileNames[1:]:
     
     #Next File
     currPos +=1
+
+
