@@ -60,8 +60,8 @@ dimensionKeys = ['topDeadLayer','geLength','sideDeadLayer','kaptonLay','innerSid
 
 # ORDER IS VERY IMPORTANT FOR THESE FOUR LISTS
 # Make sure there are no empty lines at the end of these files or an index error will occur
-compareValues = ["\Pos_1_experimental.txt","\Pos_2_experimental.txt",
-                 "\Pos_3_experimental.txt","\Pos_5_experimental.txt"]
+compareValues = ["\Pos_1_experimental_mod.txt","\Pos_2_experimental_mod.txt",
+                 "\Pos_3_experimental_mod.txt","\Pos_5_experimental_mod.txt"]
 #Names of files to merge
 fileNames = ["\HPGe_Model.i","\Pos_1_0cm_centered.i",
              "\Pos_2_0cm_flushed.i","\Pos_3_7cm_centered.i","\Pos_5_offset.i"]
@@ -247,7 +247,7 @@ for posSource in fileNames[1:]:
                               + compareValues[currPos])
     energyBins = createDictionary(energyFile)
     # How many energies do we have?
-    n = len(energyBins)
+    n = 12
     energyUncert = getThirdCol(energyFile)
     
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
