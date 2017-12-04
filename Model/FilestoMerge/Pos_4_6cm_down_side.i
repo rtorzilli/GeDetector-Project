@@ -172,12 +172,12 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=4.8885 y=0 z=7.6
-SI3 L 0.060 0.088 0.122 0.159 0.392 0.514 0.662 0.898 1.173 1.333   $ Removed Cr-51 320 KeV peak
+sdef erg=d3 par=2 x=0 y=0 z=13.7385
+SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-51 320 KeV peak
       1.836
-SP3 1 1 1 1 1 1 1 1 1 1 1      $ Equal intensity to find efficiency as a function of energy
+SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 5e6
+nps 5e3
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
