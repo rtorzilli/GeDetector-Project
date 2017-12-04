@@ -25,7 +25,9 @@ import os
 import subprocess as subP
 import numpy as np
 import Plotting_Template.plotting_template as plotter
-
+# =============================================================================
+# Start Possible Required Changes by User 
+# =============================================================================
 # User defined names for required input files. Currently requires \ before name
 mcnpModel = "\HPGe_Generic_Model.i"
 mcnpBest = "\HPGe_Generic_Model"
@@ -35,10 +37,13 @@ valuesToIterateOver = '\IterationFile.txt'
 # Name of the batch file to run
 mcnpBat = "runMCNP.bat"
 
+# How many energies do we have? Source card of the MCNP deck
+sourceMcnp = 12
+
 # Windows path for calls
 currentDir = os.path.abspath(os.path.dirname(__file__))
 
-# Windows path to runMCNP.bat/parent directory
+# Windows path to runMCNP.bat/parent directory assumes its the parent dir of this file's dir
 parentDir = os.path.split(currentDir)[0]
 
 # =============================================================================
@@ -60,8 +65,8 @@ dimensionKeys = ['topDeadLayer','geLength','sideDeadLayer','kaptonLay','innerSid
 
 # ORDER IS VERY IMPORTANT FOR THESE FOUR LISTS
 # Make sure there are no empty lines at the end of these files or an index error will occur
-compareValues = ["\Pos_1_experimental_mod.txt","\Pos_2_experimental_mod.txt",
-                 "\Pos_3_experimental_mod.txt","\Pos_5_experimental_mod.txt"]
+compareValues = ["\Pos_1_experimental.txt","\Pos_2_experimental.txt",
+                 "\Pos_3_experimental.txt","\Pos_5_experimental.txt"]
 #Names of files to merge
 fileNames = ["\HPGe_Model.i","\Pos_1_0cm_centered.i",
              "\Pos_2_0cm_flushed.i","\Pos_3_7cm_centered.i","\Pos_5_offset.i"]
@@ -71,8 +76,6 @@ dataOutLoc = [parentDir+ '\MCNP_Output\Position1\Data_and_RelativeErr\Data_Pos1_
               parentDir+ '\MCNP_Output\Position2\Data_and_RelativeErr\Data_Pos2_',
               parentDir+ '\MCNP_Output\Position3\Data_and_RelativeErr\Data_Pos3_',
               parentDir+ '\MCNP_Output\Position5\Data_and_RelativeErr\Data_Pos5_']
-
-
 
 # =============================================================================
 # Dimensions needs to be columned
@@ -89,6 +92,12 @@ mcnpModelBase = os.path.join(currentDir, "..\Model" + mcnpModel)
 # Location of created MCNP Input Deck
 outputFile = os.path.join(currentDir, "..\InputDeck" + mcnpModel)
 outputFileFinal = os.path.join(currentDir, "..\InputDeck" + mcnpBest)
+
+
+# =============================================================================
+# End Possible Required Changes by User 
+# =============================================================================
+
 
 # Opens file and replaces terms within that are matched in a defined dictionary
 # Primarily used to replace the parameters in our base model with actual numerical values
@@ -187,13 +196,16 @@ def relativeErr(experimentalData,outputData,amtOfVals):
         errorDict[key]=errOfBin
     return errorDict
 
-def chiSquared(calcData, experiData, amtOfVals):
+# Currently passing in two different dictionaries for experimental data, can be reduced
+#    in the future
+def chiSquared(calcData, experiData, experiUncert, amtOfVals):
     chi = 0
+    # This sums the relative error for each point (ie each energy bin)
     for key in calcData.keys():
         if float(experiData[key]) == 0:
             return  print ("Divided by zero! Check experimental data")
         top = (amtOfVals*float(calcData[key][0])-float(experiData[key]))**2
-        bot = float(experiData[key])
+        bot = (float(experiUncert[key]))**2
         chi += top/bot
     return chi
 
@@ -246,8 +258,7 @@ for posSource in fileNames[1:]:
     energyFile = os.path.join(currentDir, "..\Model\ExperimentalData"
                               + compareValues[currPos])
     energyBins = createDictionary(energyFile)
-    # How many energies do we have?
-    n = 12
+    
     energyUncert = getThirdCol(energyFile)
     
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
@@ -288,11 +299,11 @@ for posSource in fileNames[1:]:
                 #Grab Data
     freshData = getData(mcnpOut, energyBins)
 
-    relError = relativeErr(energyBins,freshData,n)
+    relError = relativeErr(energyBins,freshData,sourceMcnp)
                 # Break out?
     # assumming that anything less then our uncertainty is a good value
     averageError = sum(relError.values())/len(relError)
-    myChi =chiSquared(freshData,energyBins,n)
+    myChi =chiSquared(freshData,energyBins,energyUncert ,sourceMcnp)
     if myChi<.01:
         break
     
@@ -338,12 +349,12 @@ for posSource in fileNames[1:]:
             #Grab Data
             freshData = getData(mcnpOut, energyBins)
     
-            relError = relativeErr(energyBins,freshData,n)
+            relError = relativeErr(energyBins,freshData,sourceMcnp)
     
             # Break out?
             # assumming that anything less then our uncertainty is a good value
             averageError = sum(relError.values())/len(relError)
-            myChi =chiSquared(freshData,energyBins,n)
+            myChi =chiSquared(freshData,energyBins,energyUncert,sourceMcnp)
             if myChi<.01:
                 break
             elif myChi<oldAvgErr:
@@ -384,15 +395,15 @@ for posSource in fileNames[1:]:
     #Grab Data
     freshData = getData(mcnpOut, energyBins)
     #Calculate Error
-    relError = relativeErr(energyBins,freshData,n)
+    relError = relativeErr(energyBins,freshData,sourceMcnp)
     averageError = sum(relError.values())/len(relError)
-    myChi =chiSquared(freshData,energyBins,n)
+    myChi =chiSquared(freshData,energyBins,energyUncert,sourceMcnp)
     
 	# Plot the values
     # Edit values
     plotDataLocation = parentDir+'\MCNP_Output\Plots'+currentPositionFolder[currPos]+'.txt'
     plotData = createPlotFile(freshData,plotDataLocation)
-    plotter.plotIt(energyFile,plotDataLocation,n,posSource,parentDir+'\MCNP_Output\Plots')
+    plotter.plotIt(energyFile,plotDataLocation,sourceMcnp,posSource,parentDir+'\MCNP_Output\Plots')
 	
 	# Record Values
     dataOut = dataOutLoc[currPos]+'.txt'

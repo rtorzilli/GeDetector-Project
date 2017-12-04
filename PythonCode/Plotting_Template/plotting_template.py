@@ -55,6 +55,8 @@ def plotIt(ExperData,MCNPdata,amtOfVals,Title,outLocation):
     plt.legend(loc='upper right',prop={'size': 8})
     plt.xlabel('Energy [MeV]')
     plt.ylabel('Absolute Efficiency')
-    plt.title(Title)  # We might chnage
+# =============================================================================
+#     plt.title(Title)  # We might chnage
+# =============================================================================
     plt.xlim(0,1.5)
     figureFile.savefig(outLocation+Title+'.png')
