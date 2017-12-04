@@ -1,6 +1,6 @@
 c **** Source Encapsulation: POSITION 5: 16 cm above AL Casing and offest
    27        pz 29.60       $ Bottom of Mylar Under Source
-   28        pz 29.877       $ Top of Mylar Under Source, 0.2mm thick
+   28        pz 29.88       $ Top of Mylar Under Source, 0.2mm thick
    29        c/z 9.78 0 1.27         $ Mylar Cyinder, 1 mm wide
 
 c ****************************************************************************
@@ -71,7 +71,7 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=9.78 y=0 z=29.7385
+sdef erg=d3 par=2 x=9.78 y=0 z=29.877
 SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-51 320 KeV peak
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
