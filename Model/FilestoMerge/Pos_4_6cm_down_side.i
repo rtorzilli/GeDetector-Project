@@ -172,7 +172,7 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=0 y=0 z=13.7385
+sdef erg=d3 par=2 x=4.8885 y=0 z=7.6
 SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-51 320 KeV peak
       1.836
 SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
