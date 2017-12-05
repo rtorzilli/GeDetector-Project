@@ -1,0 +1,9 @@
+geDensity -5.32 5
+geLength 4.63899333 10
+topDeadLayer 12.95899333 10
+sideDeadLayer 4.02 23
+innerSideDL 0.45003 10
+innerTopDL 11.58902333 10
+kaptonLay 13.1 3
+innerAl 4.6 10
+endcapAL 13.45 3

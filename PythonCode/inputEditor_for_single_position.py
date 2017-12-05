@@ -37,7 +37,7 @@ variablesToAdjust = "\Variable_Input.txt"
 valuesToIterateOver = '\IterationFile.txt'
 
 # Name of the batch file to run
-mcnpBat = "runMCNP.bat"
+mcnpBat = "runMCNP4.bat"
 
 # How many energies do we have? Source card of the MCNP deck
 sourceMcnp = 12
@@ -62,8 +62,8 @@ varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
 # for the purpose of manipulation later
 # =============================================================================
 # in order of importance
-dimensionKeys = ['topDeadLayer','geLength','sideDeadLayer','kaptonLay','innerSideDL'
-                 ,'innerTopDL','geDensity','endcapAL','innerAl']
+dimensionKeys = ['sideDeadLayer','innerAl','innerSideDL','geDensity','topDeadLayer'
+                 ,'innerTopDL','kaptonLay','endcapAL','geLength']
 
 # ORDER IS VERY IMPORTANT FOR THESE FOUR LISTS
 # Make sure there are no empty lines at the end of these files or an index error will occur
@@ -72,7 +72,7 @@ compareValues = ["\Pos_4_experimental.txt"]
 fileNames = ["\HPGe_Model.i","\Pos_4_6cm_down_side.i"]
 currentPositionFolder = ['\Position4']
 # Data Summary Output Locations
-dataOutLoc = [parentDir+ '\MCNP_Output\Position1\Data_and_RelativeErr\Data_Pos4_']
+dataOutLoc = [parentDir+ '\MCNP_Output\Position4\Data_and_RelativeErr\Data_Pos4_']
 
 # =============================================================================
 # Dimensions needs to be columned
@@ -261,7 +261,7 @@ for posSource in fileNames[1:]:
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
        
     # reset the counters and comparisons for the new source
-    oldAvgErr = 999
+    oldAvgErr = 2**30
     detectorDimensions = createDictionary(dimensionsFile)
     # We would normally merge here but this file is for cases where merging is impractical
 

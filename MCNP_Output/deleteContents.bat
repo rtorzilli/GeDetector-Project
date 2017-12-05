@@ -10,6 +10,9 @@ del %Path_Var%Position2\Data_and_RelativeErr\Data*
 del %Path_Var%Position3\HP*
 del %Path_Var%Position3\Data_and_RelativeErr\Data*
 
+del %Path_Var%Position4\HP*
+del %Path_Var%Position4\Data_and_RelativeErr\Data*
+
 del %Path_Var%Position5\HP*
 del %Path_Var%Position5\Data_and_RelativeErr\Data*
 
