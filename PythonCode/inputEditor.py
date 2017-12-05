@@ -264,7 +264,7 @@ for posSource in fileNames[1:]:
     mcnpOutRename = parentDir+'\MCNP_Output' + currentPositionFolder[currPos] + '\HPGe_Output_Model_'
        
     # reset the counters and comparisons for the new source
-    oldAvgErr = 999
+    oldAvgErr = 2**30
     detectorDimensions = createDictionary(dimensionsFile)
     # This merges the source to variable model with the source model
     # Files that will be merged to create base model currently just the base 
