@@ -65,7 +65,7 @@ c ADD PHYSICS:
 c MPHYS ON
 c 5 MeV upper limit[5], no e-/brems[1], coherentscattering[0], photonuclear not used[0], doppler broadening on [0],  
 c multigroup + line emission in delayed gammas[j], NO LLNL photofission model sample[0]
-phys:p 5 1 0 0 0 J 0
+phys:p 5 1 0 0 0 J 0 $ change 5 to 0
 c
 cut:p j 0.030 0 0
 c
