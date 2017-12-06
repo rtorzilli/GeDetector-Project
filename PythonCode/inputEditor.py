@@ -29,6 +29,7 @@ import Plotting_Template.plotting_template as plotter
 # Start Possible Required Changes by User 
 # =============================================================================
 # User defined names for required input files. Currently requires \ before name
+# mcnpModel name is the input name for the runMCNP
 mcnpModel = "\HPGe_Generic_Model.i"
 mcnpBest = "\HPGe_Generic_Model"
 variablesToAdjust = "\Variable_Input.txt"
