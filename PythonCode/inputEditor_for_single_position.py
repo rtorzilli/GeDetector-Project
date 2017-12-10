@@ -55,9 +55,6 @@ parentDir = os.path.split(currentDir)[0]
 # =============================================================================
 mcnpOut=parentDir+'\MCNP_Output\HPGe_Output_Model'
  
-# Where Recorded Variable output will be placed (not nessearcily the best one)
-varOut = parentDir+ '\MCNP_Output\LastVariableInput\Variable_Input'
-
 # =============================================================================
 # These are the keywords in a set order (top to bottom in the files)
 # for the purpose of manipulation later
@@ -296,7 +293,7 @@ for posSource in fileNames[1:]:
     # assumming that anything less then our uncertainty is a good value
     averageError = sum(relError.values())/len(relError)
     myChi =chiSquared(freshData,energyBins,energyUncert ,sourceMcnp)
-    if myChi<.01:
+    if myChi<1:
         break
     
     # Record
@@ -347,7 +344,7 @@ for posSource in fileNames[1:]:
             # assumming that anything less then our uncertainty is a good value
             averageError = sum(relError.values())/len(relError)
             myChi =chiSquared(freshData,energyBins,energyUncert,sourceMcnp)
-            if myChi<.01:
+            if myChi<1:
                 break
             elif myChi<oldAvgErr:
                 oldAvgErr=myChi
