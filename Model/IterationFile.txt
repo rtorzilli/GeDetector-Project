@@ -4,8 +4,8 @@ geLengthMin 3.79399133
 geLengthMax 5.483999333
 sideDeadLayerMin 3.92
 sideDeadLayerMax 4.12
-geDensityMin -5.32
-geDensityMax -5.35
+geDensityMin -5.29
+geDensityMax -5.32
 innerSideDLMin 0.45001
 innerSideDLMax 0.4501
 innerTopDLMin 11.588999

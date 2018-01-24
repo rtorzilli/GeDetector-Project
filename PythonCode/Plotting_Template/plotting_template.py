@@ -23,7 +23,7 @@ def plotIt(ExperData,MCNPdata,amtOfVals,Title,outLocation):
     uncertMCNP= mcnpData[:,2]
         # Plotting:
     figureFile = plt.figure()
-    plt.rcParams.update({'font.size': 10})
+    plt.rcParams.update({'font.size': 32})
     plt.errorbar(xAxis, # X-Axis
                  effExper, # Y-Axis
                  yerr=effExper*uncertEper,  # Error Bars
@@ -31,12 +31,12 @@ def plotIt(ExperData,MCNPdata,amtOfVals,Title,outLocation):
                  color='k',
                  # Markers:
                  marker='^',
-                 markersize=10,
-                 markeredgecolor='r',
+                 markersize=8,
+                 markeredgecolor='k',
                  # Error Bars:
                  capsize=10, # error bar capsize
                  capthick=1,
-                 ecolor='r')
+                 ecolor='k')
     #
     plt.errorbar(xAxis, # X-Axis
                  amtOfVals*effMCNP, # Y-Axis
@@ -45,14 +45,14 @@ def plotIt(ExperData,MCNPdata,amtOfVals,Title,outLocation):
                  color='g',
                  # Markers:
                  marker='o',
-                 markersize=10,
-                 markeredgecolor='m',
+                 markersize=8,
+                 markeredgecolor='g',
                  # Error Bars:
                  capsize=5, # error bar capsize
                  capthick=1,
-                 ecolor='m')
+                 ecolor='g')
     #
-    plt.legend(loc='upper right',prop={'size': 8})
+    plt.legend(loc='upper right',prop={'size': 20})
     plt.xlabel('Energy [MeV]')
     plt.ylabel('Absolute Efficiency')
 # =============================================================================

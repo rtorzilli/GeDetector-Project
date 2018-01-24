@@ -12,7 +12,7 @@ c **** Detector:
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
 c ____________________________________________
 c ----------ADJUST----------
-    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
+    3     4      -5.335  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
 c ____________________________________________
     4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case  10  -0.001225
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
@@ -48,14 +48,14 @@ c ____________________________________________
 c ----------ADJUST---------- Inner hole side dead layer
 c -- Range: 0.45001 to 0.4501
 c -- Cannot be less than surface 1								  
-    2        cz 0.4500775     $ Inner side dead-layer thickness(0.00003cm),[0.45+0.00003=0.45003]
+    2        cz 0.45003     $ Inner side dead-layer thickness(0.00003cm),[0.45+0.00003=0.45003]
 c ____________________________________________
     3        pz 11.58899333 $ Inner hole cutout into Ge crystal(6.95cm),[4.63899333+6.95]
 c ____________________________________________
 c ----------ADJUST---------- $ inner hole top dead-layer
 c -- Range: 11.588999 to 11.58912333
 c -- Must be less than surface 5								
-   16        pz 11.588999 $ Inner top dead-layer thickness(0.00003cm),[11.58899333+0.00003]
+   16        pz 11.58902333 $ Inner top dead-layer thickness(0.00003cm),[11.58899333+0.00003]
 c ____________________________________________											  
 c **** Ge Crystal Dimensions:
 c ____________________________________________
@@ -85,7 +85,7 @@ c ____________________________________________
 c ----------ADJUST---------- Kapton Window Thickness
 c -- Range: 13.095 to 13.2
 c -- Cannot be lower than surface 7, or higher than surface12															 
-   77        pz 13.2        $ Kapton Layer(0.01016cm),[13.6-0.5]
+   77        pz 13.1533333333        $ Kapton Layer(0.01016cm),[13.6-0.5]
 c ____________________________________________											  
 c Al Casing:
    90        pz 0.32        $ vacuum
@@ -127,7 +127,7 @@ c Lead Shield Lining:
    67        cz 5.01        $ Copper Lining
 c **** Source Encapsulation: POSITION 2: 0cm above AL Casing and Flushed to right side
    27        pz 13.6     $ Bottom of Mylar Under Source
-   28        pz 13.877     $ Top of Mylar Under Source, 0.2mm thick
+   28        pz 13.88     $ Top of Mylar Under Source, 0.2mm thick
    29        c/z 3.48 0 1.27         $ Mylar Cyinder, 1 mm wide
 
 c ****************************************************************************
@@ -198,12 +198,12 @@ cut:p j 0.030 0 0
 c
 c ************************* Source Definition ********************************
 c ** Multi-Nuclide Point Source:                                                                   
-sdef erg=d3 par=2 x=3.48 y=0 z=13.7385
-SI3 L 0.060 0.088 0.122 0.159 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-51 320 KeV peak
+sdef erg=d3 par=2 x=3.48 y=0 z=13.877
+SI3 L 0.060 0.088 0.122 0.159 0.320 0.392 0.514 0.662 0.898 1.173 1.333  $ Removed Cr-51 320 KeV peak
       1.836
-SP3 1 1 1 1 1 1 1 1 1 1 1      $ Equal intensity to find efficiency as a function of energy
+SP3 1 1 1 1 1 1 1 1 1 1 1 1     $ Equal intensity to find efficiency as a function of energy
 c SP3 0.36 0.0363 0.856 0.84 0.0986 0.649 0.984 0.851 0.94 0.9986 0.9998 0.994   $ Branching Ratios for each photon emission
-nps 5e6
+nps 5e3
 c 
 c ************************* Tallies ******************************************
 f8:p 3                                                                          
