@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:44:12 
- *************************************************************************                 probid =  01/23/18 22:44:12 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:40:19 
+ *************************************************************************                 probid =  01/24/18 19:40:19 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -342,8 +342,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:44:13 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:44:12 
++                                                                                                    01/24/18 19:40:19 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:40:19 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -469,14 +469,14 @@
       relative error                  2.65624E-02             2.66308E-02                     0.002575
       variance of the variance        1.27269E-03             1.36103E-03                     0.069406
       shifted center                  3.09718E-01             3.09722E-01                     0.000010
-      figure of merit                 1.08850E+06             1.08291E+06                    -0.005130
+      figure of merit                 7.77497E+05             7.73508E+05                    -0.005130
 
  the estimated slope of the 186 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 5.324E-01)**2 = (3.840E+06)*(2.835E-01) = 1.088E+06
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (2.743E+06)*( 5.324E-01)**2 = (2.743E+06)*(2.835E-01) = 7.775E+05
 
 1tally       18        nps =        5000
            tally type 8    pulse height distribution.                   units   number         
@@ -8723,14 +8723,14 @@
       relative error                  2.65624E-02             2.66308E-02                     0.002575
       variance of the variance        1.27269E-03             1.36103E-03                     0.069406
       shifted center                  3.09718E-01             3.09722E-01                     0.000010
-      figure of merit                 1.08850E+06             1.08291E+06                    -0.005130
+      figure of merit                 7.77497E+05             7.73508E+05                    -0.005130
 
  the estimated slope of the 186 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 5.324E-01)**2 = (3.840E+06)*(2.835E-01) = 1.088E+06
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (2.743E+06)*( 5.324E-01)**2 = (2.743E+06)*(2.835E-01) = 7.775E+05
 
 1status of the statistical checks used to form confidence intervals for the mean for each tally bin
 
@@ -8753,11 +8753,11 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   3.1500E-01 0.0575 0.0049  0.0 1160096   3.1500E-01 0.0575 0.0049  0.0 1160096
-         2000   3.2800E-01 0.0403 0.0024 10.0 1179697   3.2800E-01 0.0403 0.0024 10.0 1179697
-         3000   3.1867E-01 0.0332 0.0016 10.0 1162836   3.1867E-01 0.0332 0.0016 10.0 1162836
-         4000   3.1092E-01 0.0293 0.0013 10.0 1121205   3.1092E-01 0.0293 0.0013 10.0 1121205
-         5000   3.0960E-01 0.0266 0.0013 10.0 1088495   3.0960E-01 0.0266 0.0013 10.0 1088495
+         1000   3.1500E-01 0.0575 0.0049  0.0  580048   3.1500E-01 0.0575 0.0049  0.0  580048
+         2000   3.2800E-01 0.0403 0.0024 10.0  786465   3.2800E-01 0.0403 0.0024 10.0  786465
+         3000   3.1867E-01 0.0332 0.0016 10.0  697702   3.1867E-01 0.0332 0.0016 10.0  697702
+         4000   3.1092E-01 0.0293 0.0013 10.0  747470   3.1092E-01 0.0293 0.0013 10.0  747470
+         5000   3.0960E-01 0.0266 0.0013 10.0  777497   3.0960E-01 0.0266 0.0013 10.0  777497
 
  ***********************************************************************************************************************
 
@@ -8771,4 +8771,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:44:13                     probid =  01/23/18 22:44:12 
+ mcnp     version 6     05/08/13                     01/24/18 19:40:19                     probid =  01/24/18 19:40:19 

@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:43:49 
- *************************************************************************                 probid =  01/23/18 22:43:49 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:39:56 
+ *************************************************************************                 probid =  01/24/18 19:39:56 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -342,8 +342,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:43:50 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:43:49 
++                                                                                                    01/24/18 19:39:56 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:39:56 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -8794,4 +8794,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:43:50                     probid =  01/23/18 22:43:49 
+ mcnp     version 6     05/08/13                     01/24/18 19:39:56                     probid =  01/24/18 19:39:56 

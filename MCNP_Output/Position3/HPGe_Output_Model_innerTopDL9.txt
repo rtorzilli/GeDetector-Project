@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:48:10 
- *************************************************************************                 probid =  01/23/18 22:48:10 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:44:22 
+ *************************************************************************                 probid =  01/24/18 19:44:22 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -338,8 +338,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:48:10 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:48:10 
++                                                                                                    01/24/18 19:44:23 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:44:22 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -429,13 +429,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.07      yes          yes            0.01      yes         yes            increase   increase      0.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no         no          no
+ observed     random        0.07      yes          yes            0.01      yes         yes            constant    random       0.00
+ passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes          no
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  3 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally        8 with nps =        5000  print table 160
 
@@ -8693,13 +8693,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.07      yes          yes            0.01      yes         yes            increase   increase      0.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no         no          no
+ observed     random        0.07      yes          yes            0.01      yes         yes            constant    random       0.00
+ passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes          no
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  3 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally       18 with nps =        5000  print table 160
 
@@ -8753,10 +8753,10 @@
 
  tally   result of statistical checks for the tfc bin (the first check not passed is listed) and error magnitude check for all bins
 
-        8   missed  3 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+        8   missed  1 of 10 tfc bin checks: there is insufficient tfc bin tally information to estimate the large tally slope reliably
          missed all bin error check:     7 tally bins had     1 bins with zeros and     5 bins with relative errors exceeding 0.10
 
-       18   missed  3 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+       18   missed  1 of 10 tfc bin checks: there is insufficient tfc bin tally information to estimate the large tally slope reliably
          missed all bin error check:  8193 tally bins had  8092 bins with zeros and   100 bins with relative errors exceeding 0.10
 
 
@@ -8770,7 +8770,7 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   4.6667E-02 0.1660 0.0372  0.0   69637   4.6667E-02 0.1660 0.0372  0.0   69637
+         1000   4.6667E-02 0.1660 0.0372  0.0  139275   4.6667E-02 0.1660 0.0372  0.0  139275
          2000   4.3500E-02 0.1210 0.0213  0.0  131194   4.3500E-02 0.1210 0.0213  0.0  131194
          3000   4.4111E-02 0.0985 0.0136  0.0  131988   4.4111E-02 0.0985 0.0136  0.0  131988
          4000   4.4083E-02 0.0844 0.0101  0.0  134793   4.4083E-02 0.0844 0.0101  0.0  134793
@@ -8788,4 +8788,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:48:10                     probid =  01/23/18 22:48:10 
+ mcnp     version 6     05/08/13                     01/24/18 19:44:23                     probid =  01/24/18 19:44:22 

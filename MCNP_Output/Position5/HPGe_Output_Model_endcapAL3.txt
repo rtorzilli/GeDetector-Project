@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:50:00 
- *************************************************************************                 probid =  01/23/18 22:50:00 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:46:12 
+ *************************************************************************                 probid =  01/24/18 19:46:12 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -50,7 +50,7 @@
         12-           2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dea
         13-       c ____________________________________________                                  
         14-       c ----------ADJUST----------                                                    
-        15-           3     4      -5.335  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal    
+        15-           3     4      -5.305  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal    
         16-       c ____________________________________________                                  
         17-           4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case
         18-           5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium 
@@ -263,7 +263,7 @@
 
         1        1        3  6.02616E-02 2.70000E+00 2.76119E+02 7.45520E+02           1  1.0000E+00                                   
         2        2        6  1.32016E-01 2.37000E+00 5.36949E-04 1.27257E-03           1  1.0000E+00                                   
-        3        3        4  4.42582E-02 5.33500E+00 3.52123E+02 1.87858E+03           1  3.0000E+00                                   
+        3        3        4  4.40093E-02 5.30500E+00 3.52123E+02 1.86801E+03           1  3.0000E+00                                   
         4        4        0  0.00000E+00 0.00000E+00 7.37260E+00 0.00000E+00           1  1.0000E+00                                   
         5        5        5  4.63305E-02 5.34000E-01 5.54689E+01 2.96204E+01           1  1.0000E+00                                   
         6        6        3  6.02616E-02 2.70000E+00 4.34386E+01 1.17284E+02           1  1.0000E+00                                   
@@ -280,7 +280,7 @@
        17       17        0  0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00           0  0.0000E+00                                   
        18       18       10  5.07085E-05 1.22500E-03 0.00000E+00 0.00000E+00           0  1.0000E+00                                   
 
- total                                               9.85855E+04 1.10610E+06
+ total                                               9.85855E+04 1.10609E+06
 
     minimum source weight = 1.0000E+00    maximum source weight = 1.0000E+00
 
@@ -338,8 +338,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:50:00 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:50:00 
++                                                                                                    01/24/18 19:46:13 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:46:12 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -386,17 +386,17 @@
               cell    entering                               * weight     weighted     weighted   track weight   track mfp
                                                           (per history)    energy       energy     (relative)      (cm)
 
-        1        1          11           11            8    1.6000E-03   4.2991E-01   4.2991E-01   1.0000E+00   3.7129E+00
+        1        1          11           11            8    1.6000E-03   4.3009E-01   4.3009E-01   1.0000E+00   3.7135E+00
         2        2           3            2            0    0.0000E+00   9.3339E-01   9.3339E-01   1.0000E+00   6.7885E+00
-        3        3         171          168          266    1.7733E-02   6.3847E-01   6.3847E-01   1.0000E+00   2.2807E+00
+        3        3         171          168          266    1.7733E-02   6.3812E-01   6.3812E-01   1.0000E+00   2.2927E+00
         4        4           2            2            0    0.0000E+00   8.9966E-01   8.9966E-01   1.0000E+00   0.0000E+00
-        5        5          88           79            6    1.2000E-03   4.3682E-01   4.3682E-01   1.0000E+00   2.2007E+01
+        5        5          88           79            6    1.2000E-03   4.3681E-01   4.3681E-01   1.0000E+00   2.2007E+01
         6        6          68           57            6    1.2000E-03   3.6955E-01   3.6955E-01   1.0000E+00   3.5109E+00
-        7        7          14           14            7    1.4000E-03   2.4051E-01   2.4051E-01   1.0000E+00   7.9354E-01
-        8        8           8            8            5    1.0000E-03   3.7877E-01   3.7877E-01   1.0000E+00   1.1382E+00
+        7        7          14           14            7    1.4000E-03   2.4063E-01   2.4063E-01   1.0000E+00   7.9581E-01
+        8        8           8            8            5    1.0000E-03   3.7752E-01   3.7752E-01   1.0000E+00   1.1362E+00
         9        9          54           51            0    0.0000E+00   5.3671E-01   5.3671E-01   1.0000E+00   7.6978E+00
        10       10          54           51            0    0.0000E+00   5.3359E-01   5.3359E-01   1.0000E+00   7.5257E+00
-       11       11         129           99            0    0.0000E+00   3.9121E-01   3.9121E-01   1.0000E+00   0.0000E+00
+       11       11         129           99            0    0.0000E+00   3.9143E-01   3.9143E-01   1.0000E+00   0.0000E+00
        12       12         151          118           13    2.6000E-03   6.8048E-01   6.8048E-01   1.0000E+00   4.5507E+00
        13       13        5000         5000          222    4.4400E-02   6.2673E-01   6.2673E-01   1.0000E+00   9.2537E+00
        14       14        3472         3507         9465    1.8930E+00   1.0052E+00   1.0052E+00   1.0000E+00   1.1423E+00
@@ -459,7 +459,7 @@
       relative error                  1.53326E-01             1.55030E-01                     0.011111
       variance of the variance        4.10901E-02             4.74437E-02                     0.154625
       shifted center                  1.03421E-02             1.03620E-02                     0.001918
-      figure of merit                 4.08357E+04             3.99432E+04                    -0.021857
+      figure of merit                 3.26686E+04             3.19545E+04                    -0.021857
 
  there is not enough information in the largest  history scores (usually less than 500 scores) for a reliable estimate of the slope.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
@@ -467,7 +467,7 @@
  the history score probability density function appears to have an unsampled region at the largest  history scores:
  please examine. see print table 161.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.800E+06)*( 9.224E-02)**2 = (4.800E+06)*(8.507E-03) = 4.084E+04
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 9.224E-02)**2 = (3.840E+06)*(8.507E-03) = 3.267E+04
 
 1unnormed tally density for tally        8          nonzero tally mean(m) = 1.041E+00   nps =        5000  print table 161
 
@@ -8724,7 +8724,7 @@
       relative error                  1.53326E-01             1.55030E-01                     0.011111
       variance of the variance        4.10901E-02             4.74437E-02                     0.154625
       shifted center                  1.03421E-02             1.03620E-02                     0.001918
-      figure of merit                 4.08357E+04             3.99432E+04                    -0.021857
+      figure of merit                 3.26686E+04             3.19545E+04                    -0.021857
 
  there is not enough information in the largest  history scores (usually less than 500 scores) for a reliable estimate of the slope.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
@@ -8732,7 +8732,7 @@
  the history score probability density function appears to have an unsampled region at the largest  history scores:
  please examine. see print table 161.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.800E+06)*( 9.224E-02)**2 = (4.800E+06)*(8.507E-03) = 4.084E+04
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 9.224E-02)**2 = (3.840E+06)*(8.507E-03) = 3.267E+04
 
 1unnormed tally density for tally       18          nonzero tally mean(m) = 1.041E+00   nps =        5000  print table 161
 
@@ -8775,8 +8775,8 @@
          1000   1.1667E-02 0.2994 0.1085  0.0   42851   1.1667E-02 0.2994 0.1085  0.0   42851
          2000   9.6667E-03 0.2315 0.0624  0.0   35819   9.6667E-03 0.2315 0.0624  0.0   35819
          3000   1.1222E-02 0.1919 0.0711  0.0   34764   1.1222E-02 0.1919 0.0711  0.0   34764
-         4000   1.1417E-02 0.1629 0.0477  0.0   48212   1.1417E-02 0.1629 0.0477  0.0   48212
-         5000   1.0200E-02 0.1533 0.0411  0.0   40836   1.0200E-02 0.1533 0.0411  0.0   40836
+         4000   1.1417E-02 0.1629 0.0477  0.0   36159   1.1417E-02 0.1629 0.0477  0.0   36159
+         5000   1.0200E-02 0.1533 0.0411  0.0   32669   1.0200E-02 0.1533 0.0411  0.0   32669
 
  ***********************************************************************************************************************
 
@@ -8790,4 +8790,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:50:00                     probid =  01/23/18 22:50:00 
+ mcnp     version 6     05/08/13                     01/24/18 19:46:13                     probid =  01/24/18 19:46:12 

@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:46:24 
- *************************************************************************                 probid =  01/23/18 22:46:24 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:42:32 
+ *************************************************************************                 probid =  01/24/18 19:42:32 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -342,8 +342,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:46:25 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:46:24 
++                                                                                                    01/24/18 19:42:32 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:42:32 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -463,12 +463,12 @@
       relative error                  3.43068E-02             3.43749E-02                     0.001986
       variance of the variance        1.92601E-03             2.01157E-03                     0.044425
       shifted center                  2.02933E-01             2.02935E-01                     0.000013
-      figure of merit                 6.52532E+05             6.49948E+05                    -0.003960
+      figure of merit                 8.15665E+05             8.12435E+05                    -0.003960
 
  the estimated slope of the 109 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 4.122E-01)**2 = (3.840E+06)*(1.699E-01) = 6.525E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.800E+06)*( 4.122E-01)**2 = (4.800E+06)*(1.699E-01) = 8.157E+05
 
 1unnormed tally density for tally        8          nonzero tally mean(m) = 1.122E+00   nps =        5000  print table 161
 
@@ -8727,12 +8727,12 @@
       relative error                  3.43068E-02             3.43749E-02                     0.001986
       variance of the variance        1.92601E-03             2.01157E-03                     0.044425
       shifted center                  2.02933E-01             2.02935E-01                     0.000013
-      figure of merit                 6.52532E+05             6.49948E+05                    -0.003960
+      figure of merit                 8.15665E+05             8.12435E+05                    -0.003960
 
  the estimated slope of the 109 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 4.122E-01)**2 = (3.840E+06)*(1.699E-01) = 6.525E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (4.800E+06)*( 4.122E-01)**2 = (4.800E+06)*(1.699E-01) = 8.157E+05
 
 1unnormed tally density for tally       18          nonzero tally mean(m) = 1.122E+00   nps =        5000  print table 161
 
@@ -8778,7 +8778,7 @@
          2000   1.9767E-01 0.0532 0.0040  0.0  677418   1.9767E-01 0.0532 0.0040  0.0  677418
          3000   2.0133E-01 0.0437 0.0031 10.0  669478   2.0133E-01 0.0437 0.0031 10.0  669478
          4000   2.0183E-01 0.0382 0.0024 10.0  657458   2.0183E-01 0.0382 0.0024 10.0  657458
-         5000   2.0280E-01 0.0343 0.0019 10.0  652532   2.0280E-01 0.0343 0.0019 10.0  652532
+         5000   2.0280E-01 0.0343 0.0019 10.0  815665   2.0280E-01 0.0343 0.0019 10.0  815665
 
  ***********************************************************************************************************************
 
@@ -8792,4 +8792,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:46:25                     probid =  01/23/18 22:46:24 
+ mcnp     version 6     05/08/13                     01/24/18 19:42:32                     probid =  01/24/18 19:42:32 

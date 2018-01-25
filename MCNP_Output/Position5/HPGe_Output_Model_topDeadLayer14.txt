@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:48:50 
- *************************************************************************                 probid =  01/23/18 22:48:50 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:45:03 
+ *************************************************************************                 probid =  01/24/18 19:45:03 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -338,8 +338,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:48:51 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:48:50 
++                                                                                                    01/24/18 19:45:04 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:45:03 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -8772,7 +8772,7 @@
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
          1000   1.3333E-02 0.2743 0.0949  0.0   51030   1.3333E-02 0.2743 0.0949  0.0   51030
          2000   1.2833E-02 0.2257 0.1315  0.0   37690   1.2833E-02 0.2257 0.1315  0.0   37690
-         3000   1.3111E-02 0.1855 0.0846  0.0   37180   1.3111E-02 0.1855 0.0846  0.0   37180
+         3000   1.3111E-02 0.1855 0.0846  0.0   55771   1.3111E-02 0.1855 0.0846  0.0   55771
          4000   1.2917E-02 0.1608 0.0580  0.0   49521   1.2917E-02 0.1608 0.0580  0.0   49521
          5000   1.1667E-02 0.1500 0.0489  0.0   42678   1.1667E-02 0.1500 0.0489  0.0   42678
 
@@ -8788,4 +8788,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:48:51                     probid =  01/23/18 22:48:50 
+ mcnp     version 6     05/08/13                     01/24/18 19:45:04                     probid =  01/24/18 19:45:03 

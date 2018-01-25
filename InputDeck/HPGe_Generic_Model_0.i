@@ -12,7 +12,7 @@ c **** Detector:
     2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dead Layer 
 c ____________________________________________
 c ----------ADJUST----------
-    3     4      -5.335  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
+    3     4      -5.32  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal
 c ____________________________________________
     4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case  10  -0.001225
     5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium Dead Layer
@@ -94,7 +94,7 @@ c ____________________________________________
 c ----------ADJUST---------- Outerside Al Casing Thickness
 c -- Range: 4.5 to 4.7
 c -- Cannot be higher than surface 11, or lower than surface 92															   
-   10        cz 4.67777777778         $ Crystal Al siding inner radius(4.6cm),[4.75-.15]
+   10        cz 4.63333333333         $ Crystal Al siding inner radius(4.6cm),[4.75-.15]
 c ____________________________________________											  
    11        cz 4.75        $ Outer Al casing radius(4.75cm), Al thickness(0.15cm)
 c ____________________________________________

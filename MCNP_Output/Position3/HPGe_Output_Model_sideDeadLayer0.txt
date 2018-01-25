@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:47:33 
- *************************************************************************                 probid =  01/23/18 22:47:33 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:43:44 
+ *************************************************************************                 probid =  01/24/18 19:43:44 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -338,8 +338,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:47:33 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:47:33 
++                                                                                                    01/24/18 19:43:44 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:43:44 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -429,13 +429,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.07      yes          yes            0.01      yes         yes            increase    random       0.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no        yes          no
+ observed     random        0.07      yes          yes            0.01      yes         yes            constant    random       0.00
+ passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes          no
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  2 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally        8 with nps =        5000  print table 160
 
@@ -8694,13 +8694,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.07      yes          yes            0.01      yes         yes            increase    random       0.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no        yes          no
+ observed     random        0.07      yes          yes            0.01      yes         yes            constant    random       0.00
+ passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes          no
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  2 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally       18 with nps =        5000  print table 160
 
@@ -8755,10 +8755,10 @@
 
  tally   result of statistical checks for the tfc bin (the first check not passed is listed) and error magnitude check for all bins
 
-        8   missed  2 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+        8   missed  1 of 10 tfc bin checks: there is insufficient tfc bin tally information to estimate the large tally slope reliably
          missed all bin error check:     7 tally bins had     1 bins with zeros and     5 bins with relative errors exceeding 0.10
 
-       18   missed  2 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+       18   missed  1 of 10 tfc bin checks: there is insufficient tfc bin tally information to estimate the large tally slope reliably
          missed all bin error check:  8193 tally bins had  8097 bins with zeros and    95 bins with relative errors exceeding 0.10
 
 
@@ -8772,10 +8772,10 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   4.0667E-02 0.1674 0.0368  0.0 0.0E+00   4.0667E-02 0.1674 0.0368  0.0 0.0E+00
-         2000   3.6667E-02 0.1245 0.0219  0.0  247874   3.6667E-02 0.1245 0.0219  0.0  247874
-         3000   3.9000E-02 0.1026 0.0167  0.0  182529   3.9000E-02 0.1026 0.0167  0.0  182529
-         4000   3.9500E-02 0.0885 0.0122  0.0  163602   3.9500E-02 0.0885 0.0122  0.0  163602
+         1000   4.0667E-02 0.1674 0.0368  0.0  137023   4.0667E-02 0.1674 0.0368  0.0  137023
+         2000   3.6667E-02 0.1245 0.0219  0.0  123937   3.6667E-02 0.1245 0.0219  0.0  123937
+         3000   3.9000E-02 0.1026 0.0167  0.0  121686   3.9000E-02 0.1026 0.0167  0.0  121686
+         4000   3.9500E-02 0.0885 0.0122  0.0  122702   3.9500E-02 0.0885 0.0122  0.0  122702
          5000   4.5000E-02 0.0750 0.0086  0.0  170734   4.5000E-02 0.0750 0.0086  0.0  170734
 
  ***********************************************************************************************************************
@@ -8790,4 +8790,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:47:33                     probid =  01/23/18 22:47:33 
+ mcnp     version 6     05/08/13                     01/24/18 19:43:44                     probid =  01/24/18 19:43:44 

@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:44:07 
- *************************************************************************                 probid =  01/23/18 22:44:07 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:40:14 
+ *************************************************************************                 probid =  01/24/18 19:40:14 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -342,8 +342,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:44:08 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:44:07 
++                                                                                                    01/24/18 19:40:14 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:40:14 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -433,13 +433,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.03      yes          yes            0.00      yes         yes            increase   increase     10.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no         no         yes
+ observed     random        0.03      yes          yes            0.00      yes         yes            increase    random      10.00
+ passed?        yes          yes      yes          yes             yes      yes         yes                no        yes         yes
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  2 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally        8 with nps =        5000  print table 160
 
@@ -463,14 +463,14 @@
       relative error                  2.63287E-02             2.63964E-02                     0.002570
       variance of the variance        1.20664E-03             1.29500E-03                     0.073224
       shifted center                  3.13316E-01             3.13319E-01                     0.000010
-      figure of merit                 9.23254E+05             9.18527E+05                    -0.005121
+      figure of merit                 6.15503E+05             6.12351E+05                    -0.005121
 
  the estimated slope of the 188 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 5.371E-01)**2 = (3.200E+06)*(2.885E-01) = 9.233E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (2.133E+06)*( 5.371E-01)**2 = (2.133E+06)*(2.885E-01) = 6.155E+05
 
 1unnormed tally density for tally        8          nonzero tally mean(m) = 1.132E+00   nps =        5000  print table 161
 
@@ -8699,13 +8699,13 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.03      yes          yes            0.00      yes         yes            increase   increase     10.00
- passed?        yes          yes      yes          yes             yes      yes         yes                no         no         yes
+ observed     random        0.03      yes          yes            0.00      yes         yes            increase    random      10.00
+ passed?        yes          yes      yes          yes             yes      yes         yes                no        yes         yes
 
  ===================================================================================================================================
 
 
- warning.  the tally in the tally fluctuation chart bin did not pass  2 of the 10 statistical checks.
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally       18 with nps =        5000  print table 160
 
@@ -8729,14 +8729,14 @@
       relative error                  2.63287E-02             2.63964E-02                     0.002570
       variance of the variance        1.20664E-03             1.29500E-03                     0.073224
       shifted center                  3.13316E-01             3.13319E-01                     0.000010
-      figure of merit                 9.23254E+05             9.18527E+05                    -0.005121
+      figure of merit                 6.15503E+05             6.12351E+05                    -0.005121
 
  the estimated slope of the 188 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 5.371E-01)**2 = (3.200E+06)*(2.885E-01) = 9.233E+05
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (2.133E+06)*( 5.371E-01)**2 = (2.133E+06)*(2.885E-01) = 6.155E+05
 
 1unnormed tally density for tally       18          nonzero tally mean(m) = 1.132E+00   nps =        5000  print table 161
 
@@ -8761,10 +8761,10 @@
 
  tally   result of statistical checks for the tfc bin (the first check not passed is listed) and error magnitude check for all bins
 
-        8   missed  2 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+        8   missed  1 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
          missed all bin error check:     7 tally bins had     1 bins with zeros and     1 bins with relative errors exceeding 0.10
 
-       18   missed  2 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
+       18   missed  1 of 10 tfc bin checks: the figure of merit does not appear to be a constant for the last half of the problem     
          missed all bin error check:  8193 tally bins had  7663 bins with zeros and   527 bins with relative errors exceeding 0.10
 
 
@@ -8778,11 +8778,11 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   3.2133E-01 0.0569 0.0048  0.0  592241   3.2133E-01 0.0569 0.0048  0.0  592241
-         2000   3.3033E-01 0.0402 0.0026 10.0  790875   3.3033E-01 0.0402 0.0026 10.0  790875
-         3000   3.1967E-01 0.0331 0.0018 10.0  874734   3.1967E-01 0.0331 0.0018 10.0  874734
-         4000   3.1475E-01 0.0291 0.0014 10.0  904223   3.1475E-01 0.0291 0.0014 10.0  904223
-         5000   3.1320E-01 0.0263 0.0012 10.0  923254   3.1320E-01 0.0263 0.0012 10.0  923254
+         1000   3.2133E-01 0.0569 0.0048  0.0  394828   3.2133E-01 0.0569 0.0048  0.0  394828
+         2000   3.3033E-01 0.0402 0.0026 10.0  593156   3.3033E-01 0.0402 0.0026 10.0  593156
+         3000   3.1967E-01 0.0331 0.0018 10.0  583156   3.1967E-01 0.0331 0.0018 10.0  583156
+         4000   3.1475E-01 0.0291 0.0014 10.0  645874   3.1475E-01 0.0291 0.0014 10.0  645874
+         5000   3.1320E-01 0.0263 0.0012 10.0  615503   3.1320E-01 0.0263 0.0012 10.0  615503
 
  ***********************************************************************************************************************
 
@@ -8796,4 +8796,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:44:08                     probid =  01/23/18 22:44:07 
+ mcnp     version 6     05/08/13                     01/24/18 19:40:15                     probid =  01/24/18 19:40:14 

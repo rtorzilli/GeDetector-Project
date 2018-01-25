@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:44:53 
- *************************************************************************                 probid =  01/23/18 22:44:53 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:41:00 
+ *************************************************************************                 probid =  01/24/18 19:41:00 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -50,7 +50,7 @@
         12-           2     6      -2.37  -2 15 -16 (3 :1 :-15 ) 14     imp:p=1  $ Inner Boron Dea
         13-       c ____________________________________________                                  
         14-       c ----------ADJUST----------                                                    
-        15-           3     4      -5.3425  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal   
+        15-           3     4      -5.3125  14 -4 -9 (16 :2 :-14 )        imp:p=3  $ Ge Crystal   
         16-       c ____________________________________________                                  
         17-           4     0             (-1 15 -3 )                   imp:p=1  $ Air Inside Case
         18-           5     5     -0.534  14 -5 -6 (9 :4 :-14 )         imp:p=1  $ Outter Lithium 
@@ -267,7 +267,7 @@
 
         1        1        3  6.02616E-02 2.70000E+00 2.05835E+02 5.55755E+02           1  1.0000E+00                                   
         2        2        6  1.32016E-01 2.37000E+00 6.48448E-04 1.53682E-03           1  1.0000E+00                                   
-        3        3        4  4.43204E-02 5.34250E+00 3.90190E+02 2.08459E+03           1  3.0000E+00                                   
+        3        3        4  4.40715E-02 5.31250E+00 3.90190E+02 2.07289E+03           1  3.0000E+00                                   
         4        4        0  0.00000E+00 0.00000E+00 7.37260E+00 0.00000E+00           1  1.0000E+00                                   
         5        5        5  4.63305E-02 5.34000E-01 8.76851E+01 4.68239E+01           1  1.0000E+00                                   
         6        6        3  6.02616E-02 2.70000E+00 4.34852E+01 1.17410E+02           1  1.0000E+00                                   
@@ -284,7 +284,7 @@
        17       17        0  0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00           0  0.0000E+00                                   
        18       18       10  5.07085E-05 1.22500E-03 2.38559E+04 2.92234E+01           1  1.0000E+00                                   
 
- total                                               1.22441E+05 1.10616E+06
+ total                                               1.22441E+05 1.10615E+06
 
     minimum source weight = 1.0000E+00    maximum source weight = 1.0000E+00
 
@@ -342,8 +342,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:44:53 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:44:53 
++                                                                                                    01/24/18 19:41:01 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:41:00 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -352,36 +352,36 @@
  nucl. interaction        0    0.            0.                  energy cutoff            0    0.            0.        
  particle decay           0    0.            0.                  time cutoff              0    0.            0.        
  weight window            0    0.            0.                  weight window            0    0.            0.        
- cell importance       3220    1.1773E-01    8.0004E-02          cell importance       1723    1.1487E-01    7.8810E-02
+ cell importance       3218    1.1787E-01    7.9933E-02          cell importance       1732    1.1547E-01    7.9266E-02
  weight cutoff            0    0.            0.                  weight cutoff            0    0.            0.        
  e or t importance        0    0.            0.                  e or t importance        0    0.            0.        
  dxtran                   0    0.            0.                  dxtran                   0    0.            0.        
  forced collisions        0    0.            0.                  forced collisions        0    0.            0.        
  exp. transform           0    0.            0.                  exp. transform           0    0.            0.        
- from neutrons            0    0.            0.                  compton scatter          0    0.            3.1234E-01
- bremsstrahlung           0    0.            0.                  capture               8816    1.4653E+00    3.5251E-01
- p-annihilation         112    1.9733E-02    1.0084E-02          pair production         56    9.8667E-03    1.7353E-02
+ from neutrons            0    0.            0.                  compton scatter          0    0.            3.1211E-01
+ bremsstrahlung           0    0.            0.                  capture               8803    1.4646E+00    3.5226E-01
+ p-annihilation         110    1.9600E-02    1.0016E-02          pair production         55    9.8000E-03    1.7230E-02
  photonuclear             0    0.            0.                  photonuclear abs         0    0.            0.        
  electron x-rays          0    0.            0.                  loss to photofis         0    0.            0.        
  compton fluores          0    0.            0.                                                                        
  muon capt fluores        0    0.            0.                                                                        
- 1st fluorescence      2280    4.5600E-01    3.5053E-02                                                                
+ 1st fluorescence      2279    4.5580E-01    3.5039E-02                                                                
  2nd fluorescence         0    0.            0.                                                                        
  (gamma,xgamma)           0    0.            0.                                                                        
  tabular sampling         0    0.            0.                                                                        
  prompt photofis          0    0.            0.                                                                        
-     total            10612    1.5935E+00    7.6331E-01              total            10612    1.5935E+00    7.6331E-01
+     total            10607    1.5933E+00    7.6316E-01              total            10607    1.5933E+00    7.6316E-01
 
-   number of photons banked                     3332        average time of (shakes)              cutoffs
-   photon tracks per source particle      2.1224E+00          escape            6.0301E-02          tco   1.0000E+33
-   photon collisions per source particle  3.7088E+00          capture           3.9874E-02          eco   3.0000E-02
-   total photon collisions                     18544          capture or escape 3.9921E-02          wc1   0.0000E+00
-                                                              any termination   3.8463E-02          wc2   0.0000E+00
+   number of photons banked                     3328        average time of (shakes)              cutoffs
+   photon tracks per source particle      2.1214E+00          escape            6.0299E-02          tco   1.0000E+33
+   photon collisions per source particle  3.6992E+00          capture           3.9896E-02          eco   3.0000E-02
+   total photon collisions                     18496          capture or escape 3.9944E-02          wc1   0.0000E+00
+                                                              any termination   3.8479E-02          wc2   0.0000E+00
 
  computer time so far in this run     0.01 minutes            maximum number ever in bank         7
  computer time in mcrun               0.00 minutes            bank overflows to backup file       0
  source particles per minute            3.0000E+05
- random numbers generated                   201355            most random numbers used was         538 in history        4323
+ random numbers generated                   200884            most random numbers used was         538 in history        4323
 
  range of sampled source weights = 1.0000E+00 to 1.0000E+00
 1photon   activity in each cell                                                                         print table 126
@@ -390,25 +390,25 @@
               cell    entering                               * weight     weighted     weighted   track weight   track mfp
                                                           (per history)    energy       energy     (relative)      (cm)
 
-        1        1          30           30           29    5.8000E-03   6.0090E-01   6.0090E-01   1.0000E+00   4.4496E+00
-        2        2         117           58            0    0.0000E+00   5.3703E-01   5.3703E-01   1.0000E+00   5.2517E+00
-        3        3        4830         4759         7121    4.7473E-01   6.6998E-01   6.6998E-01   1.0000E+00   2.3645E+00
-        4        4          60           58            0    0.0000E+00   4.6570E-01   4.6570E-01   1.0000E+00   0.0000E+00
-        5        5        2747         2461          120    2.4000E-02   6.0536E-01   6.0536E-01   1.0000E+00   2.5480E+01
-        6        6        1174         1142           23    4.6000E-03   6.7678E-01   6.7678E-01   1.0000E+00   4.7228E+00
-        7        7         215          212           53    1.0600E-02   7.2020E-01   7.2020E-01   1.0000E+00   1.5480E+00
-        8        8          97           95           25    5.0000E-03   6.3509E-01   6.3509E-01   1.0000E+00   1.4726E+00
-        9        9        2049         1971            1    2.0000E-04   6.1036E-01   6.1036E-01   1.0000E+00   8.1681E+00
-       10       10        2114         2035           56    1.1200E-02   6.0494E-01   6.0494E-01   1.0000E+00   8.0149E+00
-       11       11        3445         2640            0    0.0000E+00   6.2314E-01   6.2314E-01   1.0000E+00   0.0000E+00
-       12       12        3645         2798          341    6.8200E-02   6.0810E-01   6.0810E-01   1.0000E+00   4.3739E+00
+        1        1          31           31           34    6.8000E-03   5.7235E-01   5.7235E-01   1.0000E+00   4.3170E+00
+        2        2         115           57            0    0.0000E+00   5.2928E-01   5.2928E-01   1.0000E+00   5.2129E+00
+        3        3        4827         4755         7070    4.7133E-01   6.7094E-01   6.7094E-01   1.0000E+00   2.3803E+00
+        4        4          59           57            0    0.0000E+00   4.6152E-01   4.6152E-01   1.0000E+00   0.0000E+00
+        5        5        2747         2461          120    2.4000E-02   6.0555E-01   6.0555E-01   1.0000E+00   2.5484E+01
+        6        6        1173         1142           21    4.2000E-03   6.7945E-01   6.7945E-01   1.0000E+00   4.7307E+00
+        7        7         213          210           55    1.1000E-02   7.2499E-01   7.2499E-01   1.0000E+00   1.5533E+00
+        8        8          97           95           25    5.0000E-03   6.3693E-01   6.3693E-01   1.0000E+00   1.4746E+00
+        9        9        2051         1973            1    2.0000E-04   6.1010E-01   6.1010E-01   1.0000E+00   8.1665E+00
+       10       10        2116         2037           56    1.1200E-02   6.0471E-01   6.0471E-01   1.0000E+00   8.0135E+00
+       11       11        3446         2639            0    0.0000E+00   6.2346E-01   6.2346E-01   1.0000E+00   0.0000E+00
+       12       12        3645         2797          341    6.8200E-02   6.0838E-01   6.0838E-01   1.0000E+00   4.3747E+00
        13       13        5077         5015          231    4.6200E-02   6.1626E-01   6.1626E-01   1.0000E+00   9.1738E+00
-       14       14        3038         3100         8352    1.6704E+00   9.9027E-01   9.9027E-01   1.0000E+00   1.1238E+00
-       15       15        4550         4216         1409    2.8180E-01   6.4645E-01   6.4645E-01   1.0000E+00   1.4551E+00
-       16       16        3426         3238          778    1.5560E-01   6.8644E-01   6.8644E-01   1.0000E+00   1.4052E+00
-       18       18        4718         4240            5    1.0000E-03   5.9358E-01   5.9358E-01   1.0000E+00   9.4075E+03
+       14       14        3037         3099         8347    1.6694E+00   9.9024E-01   9.9024E-01   1.0000E+00   1.1237E+00
+       15       15        4552         4216         1414    2.8280E-01   6.4593E-01   6.4593E-01   1.0000E+00   1.4537E+00
+       16       16        3426         3237          776    1.5520E-01   6.8701E-01   6.8701E-01   1.0000E+00   1.4058E+00
+       18       18        4719         4240            5    1.0000E-03   5.9350E-01   5.9350E-01   1.0000E+00   9.4067E+03
 
-           total         41332        38068        18544    2.7593E+00
+           total         41331        38061        18496    2.7565E+00
 
 1tally        8        nps =        5000
            tally type 8    pulse height distribution.                   units   number         
@@ -417,12 +417,12 @@
          cell:           3                                                                                         
       energy   
     0.0000E+00   0.00000E+00 0.0000
-    1.0000E-05   8.16000E-02 0.0566
+    1.0000E-05   8.18000E-02 0.0567
     1.5800E-01   8.99333E-02 0.0459
-    6.5800E-01   8.90667E-02 0.0458
+    6.5800E-01   8.85333E-02 0.0460
     6.6400E-01   6.80000E-03 0.1400
-    2.0000E+00   3.90667E-02 0.0737
-      total      3.06467E-01 0.0267
+    2.0000E+00   3.91333E-02 0.0741
+      total      3.06200E-01 0.0268
 
 
  ===================================================================================================================================
@@ -433,50 +433,62 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.03      yes          yes            0.00      yes         yes            constant    random      10.00
- passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes         yes
+ observed     random        0.03      yes          yes            0.00      yes          no            constant    random      10.00
+ passed?        yes          yes      yes          yes             yes      yes          no               yes        yes         yes
 
  ===================================================================================================================================
 
 
- this tally meets the statistical criteria used to form confidence intervals: check the tally fluctuation chart to verify.
- the results in other bins associated with this tally may not meet these statistical criteria.
-
- ----- estimated confidence intervals:  -----
-
- estimated asymmetric confidence interval(1,2,3 sigma): 2.9839E-01 to 3.1478E-01; 2.9019E-01 to 3.2298E-01; 2.8199E-01 to 3.3118E-01
- estimated  symmetric confidence interval(1,2,3 sigma): 2.9827E-01 to 3.1466E-01; 2.9008E-01 to 3.2286E-01; 2.8188E-01 to 3.3105E-01
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally        8 with nps =        5000  print table 160
 
 
- normed average tally per history  = 3.06467E-01          unnormed average tally per history  = 3.06467E-01
- estimated tally relative error    = 0.0267               estimated variance of the variance  = 0.0013
- relative error from zero tallies  = 0.0232               relative error from nonzero scores  = 0.0133
+ normed average tally per history  = 3.06200E-01          unnormed average tally per history  = 3.06200E-01
+ estimated tally relative error    = 0.0268               estimated variance of the variance  = 0.0013
+ relative error from zero tallies  = 0.0232               relative error from nonzero scores  = 0.0134
 
- number of nonzero history tallies =        1354          efficiency for the nonzero tallies  = 0.2708
+ number of nonzero history tallies =        1352          efficiency for the nonzero tallies  = 0.2704
  history number of largest  tally  =        4323          largest  unnormalized history tally = 4.66667E+00
- (largest  tally)/(average tally)  = 1.52273E+01          (largest  tally)/(avg nonzero tally)= 4.12356E+00
+ (largest  tally)/(average tally)  = 1.52406E+01          (largest  tally)/(avg nonzero tally)= 4.12105E+00
 
- (confidence interval shift)/mean  = 0.0004               shifted confidence interval center  = 3.06585E-01
+ (confidence interval shift)/mean  = 0.0004               shifted confidence interval center  = 3.06319E-01
 
 
  if the largest  history score sampled so far were to occur on the next history, the tfc bin quantities would change as follows:
 
       estimated quantities           value at nps           value at nps+1           value(nps+1)/value(nps)-1.
 
-      mean                            3.06467E-01             3.07339E-01                     0.002845
-      relative error                  2.67420E-02             2.68113E-02                     0.002591
-      variance of the variance        1.27111E-03             1.36124E-03                     0.070904
-      shifted center                  3.06585E-01             3.06588E-01                     0.000011
-      figure of merit                 1.07392E+06             1.06838E+06                    -0.005161
+      mean                            3.06200E-01             3.07072E-01                     0.002848
+      relative error                  2.68090E-02             2.68779E-02                     0.002570
+      variance of the variance        1.27974E-03             1.36899E-03                     0.069744
+      shifted center                  3.06319E-01             3.06322E-01                     0.000011
+      figure of merit                 8.90472E+05             8.85912E+05                    -0.005121
 
- the estimated slope of the 182 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
+ the estimated slope of the 184 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 5.288E-01)**2 = (3.840E+06)*(2.797E-01) = 1.074E+06
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 5.275E-01)**2 = (3.200E+06)*(2.783E-01) = 8.905E+05
+
+1unnormed tally density for tally        8          nonzero tally mean(m) = 1.132E+00   nps =        5000  print table 161
+
+ abscissa              ordinate   log plot of tally probability density function in tally fluctuation chart bin(d=decade,slope=10.0)
+  tally  number num den log den:d----------------------------d-----------------------------d-----------------------------d----------
+ 3.98-01    144 3.52-01  -0.454 *****************************|*****************************|*****************************|******    
+ 5.01-01      0 0.00+00   0.000                              |                             |                             |          
+ 6.31-01      0 0.00+00   0.000                              |                             |                             |          
+ 7.94-01    164 2.01-01  -0.697 *****************************|*****************************|**************************** |          
+ 1.00+00      0 0.00+00   0.000                              |                             |                             |          
+ 1.26+00    635 4.90-01  -0.309 mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmm
+ 1.58+00    134 8.22-02  -1.085 *****************************|*****************************|*****************            |          
+ 2.00+00     91 4.44-02  -1.353 *****************************|*****************************|*********                    |          
+ 2.51+00    158 6.12-02  -1.213 *****************************|*****************************|*************                |          
+ 3.16+00     23 7.07-03  -2.150 *****************************|***************              |                             |          
+ 3.98+00      1 2.44-04  -3.612 *                            |                             |                             |          
+ 5.01+00      2 3.88-04  -3.411 *******                      |                             |                             |          
+  total    1352 2.70-01         d----------------------------d-----------------------------d-----------------------------d----------
 
 1tally       18        nps =        5000
            tally type 8    pulse height distribution.                   units   number         
@@ -485,7 +497,7 @@
  cell  3                                                                                                                               
       energy   
     0.0000E+00   0.00000E+00 0.0000
-    1.0000E-05   8.16000E-02 0.0566
+    1.0000E-05   8.18000E-02 0.0567
     6.2000E-05   0.00000E+00 0.0000
     4.4585E-04   0.00000E+00 0.0000
     8.2971E-04   0.00000E+00 0.0000
@@ -520,7 +532,7 @@
     1.1961E-02   0.00000E+00 0.0000
     1.2345E-02   0.00000E+00 0.0000
     1.2729E-02   0.00000E+00 0.0000
-    1.3113E-02   4.00000E-04 0.7070
+    1.3113E-02   2.00000E-04 0.9999
     1.3497E-02   2.00000E-04 0.9999
     1.3881E-02   2.00000E-04 0.9999
     1.4265E-02   0.00000E+00 0.0000
@@ -648,7 +660,7 @@
     6.1095E-02   0.00000E+00 0.0000
     6.1479E-02   0.00000E+00 0.0000
     6.1862E-02   0.00000E+00 0.0000
-    6.2246E-02   0.00000E+00 0.0000
+    6.2246E-02   2.00000E-04 0.9999
     6.2630E-02   0.00000E+00 0.0000
     6.3014E-02   0.00000E+00 0.0000
     6.3398E-02   2.00000E-04 0.9999
@@ -804,7 +816,7 @@
     1.2098E-01   1.33333E-04 0.9999
     1.2136E-01   5.33333E-04 0.7287
     1.2174E-01   0.00000E+00 0.0000
-    1.2213E-01   1.68000E-02 0.1049
+    1.2213E-01   1.66000E-02 0.1055
     1.2251E-01   0.00000E+00 0.0000
     1.2290E-01   0.00000E+00 0.0000
     1.2328E-01   1.33333E-04 0.9999
@@ -861,7 +873,7 @@
     1.4286E-01   0.00000E+00 0.0000
     1.4324E-01   0.00000E+00 0.0000
     1.4362E-01   0.00000E+00 0.0000
-    1.4401E-01   0.00000E+00 0.0000
+    1.4401E-01   2.00000E-04 0.9999
     1.4439E-01   4.00000E-04 0.7070
     1.4477E-01   0.00000E+00 0.0000
     1.4516E-01   0.00000E+00 0.0000
@@ -901,7 +913,7 @@
     1.5821E-01   2.00000E-04 0.9999
     1.5859E-01   0.00000E+00 0.0000
     1.5898E-01   2.00000E-04 0.9999
-    1.5936E-01   2.00667E-02 0.0946
+    1.5936E-01   2.02000E-02 0.0947
     1.5975E-01   0.00000E+00 0.0000
     1.6013E-01   0.00000E+00 0.0000
     1.6051E-01   2.00000E-04 0.9999
@@ -916,7 +928,7 @@
     1.6397E-01   0.00000E+00 0.0000
     1.6435E-01   0.00000E+00 0.0000
     1.6474E-01   0.00000E+00 0.0000
-    1.6512E-01   0.00000E+00 0.0000
+    1.6512E-01   2.00000E-04 0.9999
     1.6550E-01   0.00000E+00 0.0000
     1.6589E-01   0.00000E+00 0.0000
     1.6627E-01   0.00000E+00 0.0000
@@ -1093,7 +1105,7 @@
     2.3191E-01   2.00000E-04 0.9999
     2.3229E-01   0.00000E+00 0.0000
     2.3268E-01   0.00000E+00 0.0000
-    2.3306E-01   2.00000E-04 0.9999
+    2.3306E-01   4.00000E-04 0.7070
     2.3345E-01   0.00000E+00 0.0000
     2.3383E-01   0.00000E+00 0.0000
     2.3421E-01   1.33333E-04 0.9999
@@ -1105,7 +1117,7 @@
     2.3652E-01   0.00000E+00 0.0000
     2.3690E-01   2.00000E-04 0.9999
     2.3728E-01   0.00000E+00 0.0000
-    2.3767E-01   2.00000E-04 0.9999
+    2.3767E-01   0.00000E+00 0.0000
     2.3805E-01   2.00000E-04 0.9999
     2.3844E-01   0.00000E+00 0.0000
     2.3882E-01   0.00000E+00 0.0000
@@ -1147,7 +1159,7 @@
     2.5264E-01   0.00000E+00 0.0000
     2.5302E-01   4.00000E-04 0.7070
     2.5341E-01   0.00000E+00 0.0000
-    2.5379E-01   2.00000E-04 0.9999
+    2.5379E-01   4.00000E-04 0.7070
     2.5417E-01   0.00000E+00 0.0000
     2.5456E-01   0.00000E+00 0.0000
     2.5494E-01   0.00000E+00 0.0000
@@ -1167,9 +1179,9 @@
     2.6031E-01   0.00000E+00 0.0000
     2.6070E-01   2.00000E-04 0.9999
     2.6108E-01   0.00000E+00 0.0000
-    2.6147E-01   2.00000E-04 0.9999
+    2.6147E-01   0.00000E+00 0.0000
     2.6185E-01   0.00000E+00 0.0000
-    2.6223E-01   2.00000E-04 0.9999
+    2.6223E-01   6.66667E-05 0.9999
     2.6262E-01   0.00000E+00 0.0000
     2.6300E-01   0.00000E+00 0.0000
     2.6339E-01   0.00000E+00 0.0000
@@ -1187,7 +1199,7 @@
     2.6799E-01   0.00000E+00 0.0000
     2.6838E-01   0.00000E+00 0.0000
     2.6876E-01   2.00000E-04 0.9999
-    2.6914E-01   3.33333E-04 0.7210
+    2.6914E-01   1.33333E-04 0.9999
     2.6953E-01   0.00000E+00 0.0000
     2.6991E-01   0.00000E+00 0.0000
     2.7030E-01   4.00000E-04 0.7070
@@ -1228,7 +1240,7 @@
     2.8373E-01   0.00000E+00 0.0000
     2.8411E-01   0.00000E+00 0.0000
     2.8450E-01   0.00000E+00 0.0000
-    2.8488E-01   2.00000E-04 0.9999
+    2.8488E-01   0.00000E+00 0.0000
     2.8527E-01   0.00000E+00 0.0000
     2.8565E-01   2.00000E-04 0.9999
     2.8603E-01   0.00000E+00 0.0000
@@ -1320,7 +1332,7 @@
     3.1904E-01   0.00000E+00 0.0000
     3.1943E-01   0.00000E+00 0.0000
     3.1981E-01   0.00000E+00 0.0000
-    3.2020E-01   8.80000E-03 0.1296
+    3.2020E-01   8.66667E-03 0.1307
     3.2058E-01   0.00000E+00 0.0000
     3.2096E-01   0.00000E+00 0.0000
     3.2135E-01   0.00000E+00 0.0000
@@ -1374,7 +1386,7 @@
     3.3977E-01   0.00000E+00 0.0000
     3.4016E-01   0.00000E+00 0.0000
     3.4054E-01   0.00000E+00 0.0000
-    3.4092E-01   2.66667E-04 0.7904
+    3.4092E-01   2.00000E-04 0.9999
     3.4131E-01   2.00000E-04 0.9999
     3.4169E-01   2.00000E-04 0.9999
     3.4208E-01   0.00000E+00 0.0000
@@ -1508,7 +1520,7 @@
     3.9121E-01   0.00000E+00 0.0000
     3.9159E-01   2.00000E-04 0.9999
     3.9198E-01   0.00000E+00 0.0000
-    3.9236E-01   8.20000E-03 0.1291
+    3.9236E-01   8.26667E-03 0.1288
     3.9274E-01   0.00000E+00 0.0000
     3.9313E-01   0.00000E+00 0.0000
     3.9351E-01   0.00000E+00 0.0000
@@ -1738,7 +1750,7 @@
     4.7950E-01   0.00000E+00 0.0000
     4.7988E-01   0.00000E+00 0.0000
     4.8026E-01   0.00000E+00 0.0000
-    4.8065E-01   2.00000E-04 0.9999
+    4.8065E-01   0.00000E+00 0.0000
     4.8103E-01   0.00000E+00 0.0000
     4.8141E-01   0.00000E+00 0.0000
     4.8180E-01   0.00000E+00 0.0000
@@ -1825,7 +1837,7 @@
     5.1289E-01   0.00000E+00 0.0000
     5.1327E-01   0.00000E+00 0.0000
     5.1366E-01   0.00000E+00 0.0000
-    5.1404E-01   7.66667E-03 0.1477
+    5.1404E-01   7.46667E-03 0.1503
     5.1443E-01   0.00000E+00 0.0000
     5.1481E-01   0.00000E+00 0.0000
     5.1519E-01   0.00000E+00 0.0000
@@ -1991,7 +2003,7 @@
     5.7661E-01   0.00000E+00 0.0000
     5.7699E-01   0.00000E+00 0.0000
     5.7738E-01   0.00000E+00 0.0000
-    5.7776E-01   0.00000E+00 0.0000
+    5.7776E-01   2.00000E-04 0.9999
     5.7815E-01   2.00000E-04 0.9999
     5.7853E-01   0.00000E+00 0.0000
     5.7891E-01   0.00000E+00 0.0000
@@ -2287,7 +2299,7 @@
     6.9023E-01   0.00000E+00 0.0000
     6.9061E-01   0.00000E+00 0.0000
     6.9100E-01   2.00000E-04 0.9999
-    6.9138E-01   0.00000E+00 0.0000
+    6.9138E-01   2.00000E-04 0.9999
     6.9177E-01   0.00000E+00 0.0000
     6.9215E-01   0.00000E+00 0.0000
     6.9253E-01   0.00000E+00 0.0000
@@ -2349,7 +2361,7 @@
     7.1403E-01   0.00000E+00 0.0000
     7.1441E-01   0.00000E+00 0.0000
     7.1480E-01   0.00000E+00 0.0000
-    7.1518E-01   0.00000E+00 0.0000
+    7.1518E-01   2.00000E-04 0.9999
     7.1557E-01   0.00000E+00 0.0000
     7.1595E-01   0.00000E+00 0.0000
     7.1633E-01   0.00000E+00 0.0000
@@ -2826,7 +2838,7 @@
     8.9713E-01   0.00000E+00 0.0000
     8.9751E-01   0.00000E+00 0.0000
     8.9790E-01   0.00000E+00 0.0000
-    8.9828E-01   5.13333E-03 0.1590
+    8.9828E-01   5.00000E-03 0.1610
     8.9866E-01   0.00000E+00 0.0000
     8.9905E-01   0.00000E+00 0.0000
     8.9943E-01   0.00000E+00 0.0000
@@ -2910,7 +2922,7 @@
     9.2937E-01   0.00000E+00 0.0000
     9.2976E-01   2.00000E-04 0.9999
     9.3014E-01   0.00000E+00 0.0000
-    9.3052E-01   0.00000E+00 0.0000
+    9.3052E-01   2.00000E-04 0.9999
     9.3091E-01   0.00000E+00 0.0000
     9.3129E-01   0.00000E+00 0.0000
     9.3167E-01   0.00000E+00 0.0000
@@ -3020,7 +3032,7 @@
     9.7160E-01   0.00000E+00 0.0000
     9.7198E-01   0.00000E+00 0.0000
     9.7236E-01   0.00000E+00 0.0000
-    9.7275E-01   2.00000E-04 0.9999
+    9.7275E-01   0.00000E+00 0.0000
     9.7313E-01   0.00000E+00 0.0000
     9.7351E-01   0.00000E+00 0.0000
     9.7390E-01   0.00000E+00 0.0000
@@ -3542,7 +3554,7 @@
     1.1720E+00   0.00000E+00 0.0000
     1.1724E+00   0.00000E+00 0.0000
     1.1727E+00   0.00000E+00 0.0000
-    1.1731E+00   4.60000E-03 0.1627
+    1.1731E+00   4.40000E-03 0.1626
     1.1735E+00   0.00000E+00 0.0000
     1.1739E+00   0.00000E+00 0.0000
     1.1743E+00   0.00000E+00 0.0000
@@ -3959,7 +3971,7 @@
     1.3320E+00   0.00000E+00 0.0000
     1.3324E+00   0.00000E+00 0.0000
     1.3328E+00   0.00000E+00 0.0000
-    1.3332E+00   4.00000E-03 0.1575
+    1.3332E+00   3.93333E-03 0.1593
     1.3336E+00   0.00000E+00 0.0000
     1.3340E+00   0.00000E+00 0.0000
     1.3343E+00   0.00000E+00 0.0000
@@ -5269,7 +5281,7 @@
     1.8349E+00   0.00000E+00 0.0000
     1.8353E+00   0.00000E+00 0.0000
     1.8357E+00   0.00000E+00 0.0000
-    1.8360E+00   3.26667E-03 0.1689
+    1.8360E+00   3.33333E-03 0.1667
     1.8364E+00   0.00000E+00 0.0000
     1.8368E+00   0.00000E+00 0.0000
     1.8372E+00   0.00000E+00 0.0000
@@ -8676,7 +8688,7 @@
     3.1427E+00   0.00000E+00 0.0000
     3.1431E+00   0.00000E+00 0.0000
     3.1434E+00   0.00000E+00 0.0000
-      total      3.06467E-01 0.0267
+      total      3.06200E-01 0.0268
 
 
  ===================================================================================================================================
@@ -8687,88 +8699,101 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.03      yes          yes            0.00      yes         yes            constant    random      10.00
- passed?        yes          yes      yes          yes             yes      yes         yes               yes        yes         yes
+ observed     random        0.03      yes          yes            0.00      yes          no            constant    random      10.00
+ passed?        yes          yes      yes          yes             yes      yes          no               yes        yes         yes
 
  ===================================================================================================================================
 
 
- this tally meets the statistical criteria used to form confidence intervals: check the tally fluctuation chart to verify.
- the results in other bins associated with this tally may not meet these statistical criteria.
-
- ----- estimated confidence intervals:  -----
-
- estimated asymmetric confidence interval(1,2,3 sigma): 2.9839E-01 to 3.1478E-01; 2.9019E-01 to 3.2298E-01; 2.8199E-01 to 3.3118E-01
- estimated  symmetric confidence interval(1,2,3 sigma): 2.9827E-01 to 3.1466E-01; 2.9008E-01 to 3.2286E-01; 2.8188E-01 to 3.3105E-01
+ warning.  the tally in the tally fluctuation chart bin did not pass  1 of the 10 statistical checks.
 
 1analysis of the results in the tally fluctuation chart bin (tfc) for tally       18 with nps =        5000  print table 160
 
 
- normed average tally per history  = 3.06467E-01          unnormed average tally per history  = 3.06467E-01
- estimated tally relative error    = 0.0267               estimated variance of the variance  = 0.0013
- relative error from zero tallies  = 0.0232               relative error from nonzero scores  = 0.0133
+ normed average tally per history  = 3.06200E-01          unnormed average tally per history  = 3.06200E-01
+ estimated tally relative error    = 0.0268               estimated variance of the variance  = 0.0013
+ relative error from zero tallies  = 0.0232               relative error from nonzero scores  = 0.0134
 
- number of nonzero history tallies =        1354          efficiency for the nonzero tallies  = 0.2708
+ number of nonzero history tallies =        1352          efficiency for the nonzero tallies  = 0.2704
  history number of largest  tally  =        4323          largest  unnormalized history tally = 4.66667E+00
- (largest  tally)/(average tally)  = 1.52273E+01          (largest  tally)/(avg nonzero tally)= 4.12356E+00
+ (largest  tally)/(average tally)  = 1.52406E+01          (largest  tally)/(avg nonzero tally)= 4.12105E+00
 
- (confidence interval shift)/mean  = 0.0004               shifted confidence interval center  = 3.06585E-01
+ (confidence interval shift)/mean  = 0.0004               shifted confidence interval center  = 3.06319E-01
 
 
  if the largest  history score sampled so far were to occur on the next history, the tfc bin quantities would change as follows:
 
       estimated quantities           value at nps           value at nps+1           value(nps+1)/value(nps)-1.
 
-      mean                            3.06467E-01             3.07339E-01                     0.002845
-      relative error                  2.67420E-02             2.68113E-02                     0.002591
-      variance of the variance        1.27111E-03             1.36124E-03                     0.070904
-      shifted center                  3.06585E-01             3.06588E-01                     0.000011
-      figure of merit                 1.07392E+06             1.06838E+06                    -0.005161
+      mean                            3.06200E-01             3.07072E-01                     0.002848
+      relative error                  2.68090E-02             2.68779E-02                     0.002570
+      variance of the variance        1.27974E-03             1.36899E-03                     0.069744
+      shifted center                  3.06319E-01             3.06322E-01                     0.000011
+      figure of merit                 8.90472E+05             8.85912E+05                    -0.005121
 
- the estimated slope of the 182 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
+ the estimated slope of the 184 largest  tallies starting at  1.83333E+00 appears to be decreasing at least exponentially.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
  please examine. see print table 161.
  the large score tail of the empirical history score probability density function appears to have no unsampled regions.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.840E+06)*( 5.288E-01)**2 = (3.840E+06)*(2.797E-01) = 1.074E+06
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 5.275E-01)**2 = (3.200E+06)*(2.783E-01) = 8.905E+05
+
+1unnormed tally density for tally       18          nonzero tally mean(m) = 1.132E+00   nps =        5000  print table 161
+
+ abscissa              ordinate   log plot of tally probability density function in tally fluctuation chart bin(d=decade,slope=10.0)
+  tally  number num den log den:d----------------------------d-----------------------------d-----------------------------d----------
+ 3.98-01    144 3.52-01  -0.454 *****************************|*****************************|*****************************|******    
+ 5.01-01      0 0.00+00   0.000                              |                             |                             |          
+ 6.31-01      0 0.00+00   0.000                              |                             |                             |          
+ 7.94-01    164 2.01-01  -0.697 *****************************|*****************************|**************************** |          
+ 1.00+00      0 0.00+00   0.000                              |                             |                             |          
+ 1.26+00    635 4.90-01  -0.309 mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmmmmmmmmmmmmmmmmmmmmm|mmmmmmmmmm
+ 1.58+00    134 8.22-02  -1.085 *****************************|*****************************|*****************            |          
+ 2.00+00     91 4.44-02  -1.353 *****************************|*****************************|*********                    |          
+ 2.51+00    158 6.12-02  -1.213 *****************************|*****************************|*************                |          
+ 3.16+00     23 7.07-03  -2.150 *****************************|***************              |                             |          
+ 3.98+00      1 2.44-04  -3.612 *                            |                             |                             |          
+ 5.01+00      2 3.88-04  -3.411 *******                      |                             |                             |          
+  total    1352 2.70-01         d----------------------------d-----------------------------d-----------------------------d----------
 
 1status of the statistical checks used to form confidence intervals for the mean for each tally bin
 
 
  tally   result of statistical checks for the tfc bin (the first check not passed is listed) and error magnitude check for all bins
 
-        8   passed the 10 statistical checks for the tally fluctuation chart bin result               
+        8   missed  1 of 10 tfc bin checks: the variance of the variance appears not to decrease as 1/nps for the last half of problem
          missed all bin error check:     7 tally bins had     1 bins with zeros and     1 bins with relative errors exceeding 0.10
 
-       18   passed the 10 statistical checks for the tally fluctuation chart bin result               
-         missed all bin error check:  8193 tally bins had  7686 bins with zeros and   504 bins with relative errors exceeding 0.10
+       18   missed  1 of 10 tfc bin checks: the variance of the variance appears not to decrease as 1/nps for the last half of problem
+         missed all bin error check:  8193 tally bins had  7684 bins with zeros and   506 bins with relative errors exceeding 0.10
 
 
  the 10 statistical checks are only for the tally fluctuation chart bin and do not apply to other tally bins.
 
  the tally bins with zeros may or may not be correct: compare the source, cutoffs, multipliers, et cetera with the tally bins.
 
+ warning.       2 of the     2 tally fluctuation chart bins did not pass all 10 statistical checks.
  warning.       2 of the     2 tallies had bins with relative errors greater than recommended.
 1tally fluctuation charts                              
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   3.0200E-01 0.0576 0.0044  0.0 1157481   3.0200E-01 0.0576 0.0044  0.0 1157481
-         2000   3.2250E-01 0.0404 0.0022 10.0 1178725   3.2250E-01 0.0404 0.0022 10.0 1178725
-         3000   3.1556E-01 0.0332 0.0016 10.0 1160066   3.1556E-01 0.0332 0.0016 10.0 1160066
-         4000   3.0733E-01 0.0294 0.0013 10.0 1107708   3.0733E-01 0.0294 0.0013 10.0 1107708
-         5000   3.0647E-01 0.0267 0.0013 10.0 1073924   3.0647E-01 0.0267 0.0013 10.0 1073924
+         1000   3.0333E-01 0.0574 0.0043  0.0 1163990   3.0333E-01 0.0574 0.0043  0.0 1163990
+         2000   3.2300E-01 0.0403 0.0022 10.0 1180217   3.2300E-01 0.0403 0.0022 10.0 1180217
+         3000   3.1578E-01 0.0333 0.0016 10.0 1154151   3.1578E-01 0.0333 0.0016 10.0 1154151
+         4000   3.0700E-01 0.0295 0.0013 10.0 1100696   3.0700E-01 0.0295 0.0013 10.0 1100696
+         5000   3.0620E-01 0.0268 0.0013 10.0  890472   3.0620E-01 0.0268 0.0013 10.0  890472
 
  ***********************************************************************************************************************
 
- dump no.    2 on file runtpe     nps =        5000     coll =          18544     ctm =        0.00   nrn =           
- 201355
+ dump no.    2 on file runtpe     nps =        5000     coll =          18496     ctm =        0.00   nrn =           
+ 200884
 
-         5 warning messages so far.
+         8 warning messages so far.
 
 
  run terminated when        5000  particle histories were done.
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:44:53                     probid =  01/23/18 22:44:53 
+ mcnp     version 6     05/08/13                     01/24/18 19:41:01                     probid =  01/24/18 19:41:00 

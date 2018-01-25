@@ -30,8 +30,8 @@
   | PRIVATELY OWNED RIGHTS.                                             |
   +---------------------------------------------------------------------+
   
-1mcnp     version 6     ld=05/08/13                     01/23/18 22:48:46 
- *************************************************************************                 probid =  01/23/18 22:48:46 
+1mcnp     version 6     ld=05/08/13                     01/24/18 19:44:59 
+ *************************************************************************                 probid =  01/24/18 19:44:59 
  i=InputDeck\HPGe_Generic_Model.i o=MCNP_Output\HPGe_Output_Model                
 
  
@@ -338,8 +338,8 @@
 1problem summary                                                                                                           
 
       run terminated when        5000  particle histories were done.
-+                                                                                                    01/23/18 22:48:47 
-      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/23/18 22:48:46 
++                                                                                                    01/24/18 19:45:00 
+      Canberra Standard Electrode Coaxial Ge Detector (HPGe, P-Type)                       probid =  01/24/18 19:44:59 
 
  photon creation     tracks      weight        energy            photon loss         tracks      weight        energy
                                  (per source particle)                                           (per source particle)
@@ -429,7 +429,7 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.15      yes          yes            0.04      yes          no            increase    random       0.00
+ observed     random        0.15      yes          yes            0.04      yes          no            decrease    random       0.00
  passed?        yes           no      yes          yes             yes      yes          no                no        yes          no
 
  ===================================================================================================================================
@@ -459,7 +459,7 @@
       relative error                  1.49909E-01             1.51655E-01                     0.011646
       variance of the variance        4.14125E-02             4.73021E-02                     0.142218
       shifted center                  1.06772E-02             1.06964E-02                     0.001805
-      figure of merit                 5.69581E+04             5.56542E+04                    -0.022892
+      figure of merit                 2.84791E+04             2.78271E+04                    -0.022892
 
  there is not enough information in the largest  history scores (usually less than 500 scores) for a reliable estimate of the slope.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
@@ -467,7 +467,7 @@
  the history score probability density function appears to have an unsampled region at the largest  history scores:
  please examine. see print table 161.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (6.400E+06)*( 9.434E-02)**2 = (6.400E+06)*(8.900E-03) = 5.696E+04
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 9.434E-02)**2 = (3.200E+06)*(8.900E-03) = 2.848E+04
 
 1unnormed tally density for tally        8          nonzero tally mean(m) = 9.753E-01   nps =        5000  print table 161
 
@@ -8694,7 +8694,7 @@
  behavior    behavior      value   decrease   decrease rate      value   decrease   decrease rate       value     behavior     slope
 
  desired      random       <0.10      yes      1/sqrt(nps)       <0.10      yes        1/nps           constant    random      >3.00
- observed     random        0.15      yes          yes            0.04      yes          no            increase    random       0.00
+ observed     random        0.15      yes          yes            0.04      yes          no            decrease    random       0.00
  passed?        yes           no      yes          yes             yes      yes          no                no        yes          no
 
  ===================================================================================================================================
@@ -8724,7 +8724,7 @@
       relative error                  1.49909E-01             1.51655E-01                     0.011646
       variance of the variance        4.14125E-02             4.73021E-02                     0.142218
       shifted center                  1.06772E-02             1.06964E-02                     0.001805
-      figure of merit                 5.69581E+04             5.56542E+04                    -0.022892
+      figure of merit                 2.84791E+04             2.78271E+04                    -0.022892
 
  there is not enough information in the largest  history scores (usually less than 500 scores) for a reliable estimate of the slope.
  the empirical history score probability density function appears to be increasing at the largest  history scores:
@@ -8732,7 +8732,7 @@
  the history score probability density function appears to have an unsampled region at the largest  history scores:
  please examine. see print table 161.
 
- fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (6.400E+06)*( 9.434E-02)**2 = (6.400E+06)*(8.900E-03) = 5.696E+04
+ fom = (histories/minute)*(f(x) signal-to-noise ratio)**2 = (3.200E+06)*( 9.434E-02)**2 = (3.200E+06)*(8.900E-03) = 2.848E+04
 
 1unnormed tally density for tally       18          nonzero tally mean(m) = 9.753E-01   nps =        5000  print table 161
 
@@ -8772,11 +8772,11 @@
 
                             tally        8                          tally       18
           nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom
-         1000   1.2667E-02 0.2792 0.1030  0.0 0.0E+00   1.2667E-02 0.2792 0.1030  0.0 0.0E+00
-         2000   1.0333E-02 0.2200 0.0589  0.0   79327   1.0333E-02 0.2200 0.0589  0.0   79327
-         3000   1.1222E-02 0.1857 0.0751  0.0   55705   1.1222E-02 0.1857 0.0751  0.0   55705
-         4000   1.1500E-02 0.1609 0.0502  0.0   74131   1.1500E-02 0.1609 0.0502  0.0   74131
-         5000   1.0533E-02 0.1499 0.0414  0.0   56958   1.0533E-02 0.1499 0.0414  0.0   56958
+         1000   1.2667E-02 0.2792 0.1030  0.0   49264   1.2667E-02 0.2792 0.1030  0.0   49264
+         2000   1.0333E-02 0.2200 0.0589  0.0   26442   1.0333E-02 0.2200 0.0589  0.0   26442
+         3000   1.1222E-02 0.1857 0.0751  0.0   27853   1.1222E-02 0.1857 0.0751  0.0   27853
+         4000   1.1500E-02 0.1609 0.0502  0.0   29653   1.1500E-02 0.1609 0.0502  0.0   29653
+         5000   1.0533E-02 0.1499 0.0414  0.0   28479   1.0533E-02 0.1499 0.0414  0.0   28479
 
  ***********************************************************************************************************************
 
@@ -8790,4 +8790,4 @@
 
  computer time =    0.01 minutes
 
- mcnp     version 6     05/08/13                     01/23/18 22:48:47                     probid =  01/23/18 22:48:46 
+ mcnp     version 6     05/08/13                     01/24/18 19:45:00                     probid =  01/24/18 19:44:59 
